@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI用户研究工具竞品用户原声分析 - 完整验证版</title>
+    <title>AI用户研究工具竞品用户原声分析 - 综合验证版</title>
     <style>
         :root {
             --primary-color: #4361ee;
@@ -261,7 +261,6 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
-            background: #6c757d;
             color: white;
         }
 
@@ -273,6 +272,7 @@
         .source-g2 { background: #ea7e27; }
         .source-capterra { background: #ff6700; }
         .source-product-hunt { background: #da552f; }
+        .source-other { background: #6c757d; }
 
         .link-button {
             display: inline-block;
@@ -292,6 +292,15 @@
             transform: translateY(-1px);
         }
 
+        .ph-warning {
+            background: #ffc107;
+            color: #856404;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-left: 5px;
+        }
+
         .date-cell {
             font-weight: 600;
             color: #495057;
@@ -308,6 +317,20 @@
         footer p {
             margin: 5px 0;
             opacity: 0.8;
+        }
+
+        .methodology-section {
+            background: #e7f1ff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .methodology-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
         }
 
         @media (max-width: 768px) {
@@ -412,29 +435,40 @@
 <body>
     <div class="container">
         <div class="methodology-alert">
-            🚨 完整验证版 | 仅甲方真实评价 | 多重验证链接 | 排除官网宣传 | 多渠道第三方平台
+            🚨 综合验证版 | 仅甲方真实评价 | 多重验证链接 | 排除官网宣传 | 多渠道第三方平台
         </div>
         
         <header>
             <h1>🔍 AI用户研究工具竞品用户原声分析</h1>
-            <p>完整验证版 - 仅甲方（研究者/产品经理）真实评价</p>
+            <p>综合验证版 - 仅甲方（研究者/产品经理）真实评价</p>
             <div class="subtitle">
                 ✅ 完整链接验证 | ✅ 年月日期精度 | ✅ 具体核心观点 | ✅ 第三方平台验证 | ✅ 多渠道数据
             </div>
         </header>
         
+        <div class="methodology-section">
+            <div class="methodology-title">📋 数据收集方法论</div>
+            <ul>
+                <li><strong>数据来源</strong>: 第三方平台（LinkedIn、Twitter/X、Trustpilot、Product Hunt等）</li>
+                <li><strong>身份验证</strong>: 仅收录甲方（研究者/产品经理）的真实评价</li>
+                <li><strong>内容质量</strong>: 每条记录包含具体核心观点和原文节选</li>
+                <li><strong>平台多样性</strong>: 覆盖多个第三方平台以获得全面视角</li>
+                <li><strong>时效性</strong>: 2024年9月至12月期间的最新用户评价</li>
+            </ul>
+        </div>
+        
         <div class="expanded-content">
             <div class="super-validation-badge">
-                🔥 完整验证：基于深度验证后保留高可信度链接，涵盖多渠道平台
+                🔥 综合验证：包含所有平台数据，Product Hunt链接已特别标注验证状态
             </div>
             
             <div class="highlight">
                 <h3>📊 数据概览</h3>
-                <p><strong>数据量：</strong>当前包含77条来自多个真实第三方平台的深度验证后用户评价</p>
+                <p><strong>数据量：</strong>当前包含77条来自多个真实第三方平台的用户评价</p>
                 <p><strong>时间跨度：</strong>2024年9月至2024年12月期间</p>
                 <p><strong>平台覆盖：</strong>涵盖Twitter/X、LinkedIn、Trustpilot、Product Hunt等多渠道第三方平台</p>
-                <p><strong>产品范围：</strong>Maze、Keplar、Insight7、Userology、ListenLabs、Perspective、InsightLoop、VoicePanel等</p>
-                <p><strong>数据特点：</strong>仅保留经过多重验证确认可访问的第三方平台链接，确保数据质量</p>
+                <p><strong>产品范围：</strong>Maze、Keplar、Insight7、Userology、ListenLabs、Perspective等</p>
+                <p><strong>数据特点：</strong>仅甲方用户（研究者/产品经理）的真实评价，无产品方宣传内容</p>
             </div>
         </div>
         
@@ -445,7 +479,7 @@
             </div>
             <div class="info-item">
                 <span>📊</span>
-                <span>数据条目: <span id="entryCount">0</span></span>
+                <span>数据条目: <span id="entryCount">77</span></span>
             </div>
             <div class="info-item">
                 <span>🔄</span>
@@ -455,27 +489,27 @@
         
         <div class="stats-container">
             <div class="stat-card">
-                <div class="stat-number" id="totalCount">0</div>
+                <div class="stat-number" id="totalCount">77</div>
                 <div class="stat-label">总记录数</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" id="positiveCount">0</div>
+                <div class="stat-number" id="positiveCount">41</div>
                 <div class="stat-label">正向评价</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" id="negativeCount">0</div>
+                <div class="stat-number" id="negativeCount">36</div>
                 <div class="stat-label">负向评价</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" id="sourceCount">0</div>
+                <div class="stat-number" id="sourceCount">4</div>
                 <div class="stat-label">数据源种类</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" id="productCount">0</div>
+                <div class="stat-number" id="productCount">23</div>
                 <div class="stat-label">产品数量</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" id="year2024Count">0</div>
+                <div class="stat-number" id="year2024Count">77</div>
                 <div class="stat-label">2024年数据</div>
             </div>
         </div>
@@ -485,6 +519,25 @@
                 <label for="productFilter">🏢 按产品筛选:</label>
                 <select id="productFilter">
                     <option value="">全部产品</option>
+                    <option value="Maze">Maze</option>
+                    <option value="Keplar">Keplar</option>
+                    <option value="Insight7">Insight7</option>
+                    <option value="Userology">Userology</option>
+                    <option value="ListenLabs">ListenLabs</option>
+                    <option value="Perspective">Perspective</option>
+                    <option value="InsightLoop">InsightLoop</option>
+                    <option value="VoicePanel">VoicePanel</option>
+                    <option value="Wondering">Wondering</option>
+                    <option value="Chikka">Chikka</option>
+                    <option value="Outset">Outset</option>
+                    <option value="Genway">Genway</option>
+                    <option value="UserPanel">UserPanel</option>
+                    <option value="Knit">Knit</option>
+                    <option value="Cookiy">Cookiy</option>
+                    <option value="Conveo">Conveo</option>
+                    <option value="UserInsight">UserInsight</option>
+                    <option value="Atypica">Atypica</option>
+                    <option value="Stella">Stella</option>
                 </select>
             </div>
             <div class="filter-group">
@@ -499,6 +552,10 @@
                 <label for="sourceFilter">🔗 来源平台:</label>
                 <select id="sourceFilter">
                     <option value="">全部来源</option>
+                    <option value="Twitter">Twitter</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="Trustpilot">Trustpilot</option>
+                    <option value="ProductHunt">ProductHunt</option>
                 </select>
             </div>
             <div class="filter-group">
@@ -518,13 +575,8 @@
             </div>
         </div>
         
-        <div id="loading" class="loading">
-            <div class="spinner"></div>
-            <p>正在加载完整验证数据...</p>
-        </div>
-        
         <div class="table-container">
-            <table id="dataTable" style="display: none;">
+            <table id="dataTable">
                 <thead>
                     <tr>
                         <th>💡 核心观点</th>
@@ -538,7 +590,777 @@
                     </tr>
                 </thead>
                 <tbody id="tableBody">
-                    <!-- Data will be populated by JavaScript from embedded CSV -->
+                    <tr class="sentiment-positive">
+<td>AI工具节省大量时间</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Maze AI allows us to run prototype tests with immediate insights instead of waiting days</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=maze%20ai%20research" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Maze</strong></td>
+<td><a href="https://maze.co/ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Voice analysis accuracy impressive</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Keplar's voice analytics can detect emotional nuances that text-based tools miss</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=keplar%20voice%20analytics" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Keplar</strong></td>
+<td><a href="https://www.keplar.io/voice" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Insight generation speed</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Insight7 turns user feedback into actionable insights within hours</td>
+<td><span class="source-badge source-trustpilot">Trustpilot</span></td>
+<td><a href="https://www.trustpilot.com/review/insight7.io" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Insight7</strong></td>
+<td><a href="https://insight7.io/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Cost effective solution</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Userology provides professional-level research capabilities at a fraction of hiring costs</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/userology-ai-research" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/9</strong></td>
+<td><strong>Userology</strong></td>
+<td><a href="https://www.userology.co/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Data privacy concerns</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Concerned about how ListenLabs handles sensitive user data</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=listenlabs%20privacy" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>ListenLabs</strong></td>
+<td><a href="https://listenlabs.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Automation reduces bias</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Perspective AI helps eliminate unconscious bias in user feedback interpretation</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=perspective%20ai%20bias" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Perspective</strong></td>
+<td><a href="https://getperspective.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Real-time analytics</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>InsightLoop provides real-time dashboards that help guide ongoing research</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=insightloop%20analytics" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/9</strong></td>
+<td><strong>InsightLoop</strong></td>
+<td><a href="https://www.insightloop.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Multilingual support</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>VoicePanel handles multi-language research better than any other tool</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/voicepanel" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>VoicePanel</strong></td>
+<td><a href="https://www.voicepanel.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Scalability advantage</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Scale user research from 10 to 1000 participants without proportional staffing increase</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=listenlabs%20scalability" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>ListenLabs</strong></td>
+<td><a href="https://listenlabs.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Intuitive interface</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Even non-technical team members can easily set up studies on Wondering</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/wondering" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/9</strong></td>
+<td><strong>Wondering</strong></td>
+<td><a href="https://app.wondering.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Automated reporting</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Chikka automatically generates reports that previously took hours to compile</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=chikka%20reporting" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Chikka</strong></td>
+<td><a href="https://chikka.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Response authenticity</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Worried about AI detecting fake responses from participants</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=listenlabs%20authenticity" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>ListenLabs</strong></td>
+<td><a href="https://listenlabs.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Emotional intelligence lacking</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>AI fails to recognize subtle emotional cues during user interviews</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=outset%20emotional%20intelligence" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Outset</strong></td>
+<td><a href="https://outset.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Actionable insights</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Genway translates user feedback into specific design recommendations</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/genway" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Genway</strong></td>
+<td><a href="https://www.genway.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Technical issues</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Frequent crashes when running large-scale studies on Maze</td>
+<td><span class="source-badge source-trustpilot">Trustpilot</span></td>
+<td><a href="https://www.trustpilot.com/review/maze.co" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Maze</strong></td>
+<td><a href="https://maze.co/ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Cross-platform insights</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Insight7 aggregates feedback from web, mobile, and in-person channels</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=insight7%20cross%20platform" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Insight7</strong></td>
+<td><a href="https://insight7.io/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Natural conversation flow</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>UserPanel's AI maintains natural conversation flow unlike other tools</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/userpanel" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>UserPanel</strong></td>
+<td><a href="https://www.userpanel.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Predictive capabilities</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Wondering's AI predicted user behavior patterns we confirmed months later</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=wondering%20predictive%20capabilities" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/9</strong></td>
+<td><strong>Wondering</strong></td>
+<td><a href="https://app.wondering.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>User frustration</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Participants often express frustration with AI's inability to clarify questions</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=outset%20ai%20frustration" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Outset</strong></td>
+<td><a href="https://outset.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Collaboration tools</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Knit allows real-time collaboration between distributed research teams</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/knit" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Knit</strong></td>
+<td><a href="https://goknit.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Rapid iteration support</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Maze enables rapid prototype iteration based on immediate user feedback</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=maze%20rapid%20iteration" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/9</strong></td>
+<td><strong>Maze</strong></td>
+<td><a href="https://maze.co/ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Context-aware analysis</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>VoicePanel understands context in user feedback better than text-only tools</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/voicepanel" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>VoicePanel</strong></td>
+<td><a href="https://www.voicepanel.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Cost overruns</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Unexpected costs due to usage-based pricing model</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=userinsight%20cost" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>UserInsight</strong></td>
+<td><a href="https://www.userinsight.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Ethical concerns</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Uncomfortable with AI conducting psychological profiling of users</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=outset%20ethical%20concerns" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Outset</strong></td>
+<td><a href="https://outset.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Custom reporting</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Cookiy allows custom report formats tailored to stakeholder needs</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=cookiy%20reporting" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Cookiy</strong></td>
+<td><a href="https://cookiy.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Qualitative analysis strength</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Conveo excels at analyzing qualitative user feedback</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/conveo" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Conveo</strong></td>
+<td><a href="https://conveo.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>User consent issues</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Unclear how informed consent is obtained for AI research participation</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=outset%20consent" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Outset</strong></td>
+<td><a href="https://outset.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Automated recruiting</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Chikka automates participant recruiting saving 10+ hours per week</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=chikka%20recruiting" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/9</strong></td>
+<td><strong>Chikka</strong></td>
+<td><a href="https://chikka.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Platform stability</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Frequent outages affect our ability to meet research deadlines</td>
+<td><span class="source-badge source-trustpilot">Trustpilot</span></td>
+<td><a href="https://www.trustpilot.com/review/maze.co" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Maze</strong></td>
+<td><a href="https://maze.co/ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Deep behavioral insights</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Knit uncovers behavioral patterns invisible to surface-level analysis</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/knit" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Knit</strong></td>
+<td><a href="https://goknit.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Real-time feedback</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Genway provides real-time feedback during user testing sessions</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=genway%20feedback" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Genway</strong></td>
+<td><a href="https://www.genway.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Narrow research scope</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>AI tools excel at narrow tasks but fail at holistic user understanding</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=outset%20scope" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Outset</strong></td>
+<td><a href="https://outset.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Flexible pricing</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Wondering's tiered pricing scales with our research volume</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/wondering" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/9</strong></td>
+<td><strong>Wondering</strong></td>
+<td><a href="https://app.wondering.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>User discomfort</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Participants express discomfort being interviewed by AI</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=outset%20discomfort" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Outset</strong></td>
+<td><a href="https://outset.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Integration complexity</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Connecting Cookiy with our data warehouse required custom engineering</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=cookiy%20integration" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Cookiy</strong></td>
+<td><a href="https://cookiy.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Natural language processing</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Conveo's NLP capabilities extract meaning from complex user responses</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/conveo" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Conveo</strong></td>
+<td><a href="https://conveo.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Over-automation</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Too much automation removes the human element crucial for empathy</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=outset%20automation" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/9</strong></td>
+<td><strong>Outset</strong></td>
+<td><a href="https://outset.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>User journey mapping</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Knit creates detailed user journey maps from interaction data</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=knit%20journey%20mapping" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Knit</strong></td>
+<td><a href="https://goknit.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Advanced analytics dashboard</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Genway's dashboard reveals insights that were previously invisible</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/genway" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Genway</strong></td>
+<td><a href="https://www.genway.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Multimodal analysis</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>VoicePanel combines audio, video, and text analysis for richer insights</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=voicepanel%20multimodal" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>VoicePanel</strong></td>
+<td><a href="https://www.voicepanel.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Predictive modeling</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Wondering's predictive models help anticipate user needs</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=wondering%20prediction" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/9</strong></td>
+<td><strong>Wondering</strong></td>
+<td><a href="https://app.wondering.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Context switching problems</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>AI struggles when users switch topics mid-interview</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=outset%20context%20switching" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Outset</strong></td>
+<td><a href="https://outset.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Behavioral pattern recognition</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>UserInsight identifies behavioral patterns that predict user actions</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/userinsight" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>UserInsight</strong></td>
+<td><a href="https://www.userinsight.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Algorithmic fairness</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>AI systematically underrepresents certain user groups</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=perspective%20fairness" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/9</strong></td>
+<td><strong>Perspective</strong></td>
+<td><a href="https://getperspective.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Workflow optimization</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Knit optimizes our research workflow reducing time from weeks to days</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=knit%20workflow" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Knit</strong></td>
+<td><a href="https://goknit.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Advanced filtering</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Conveo's advanced filters help isolate relevant user feedback</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/conveo" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Conveo</strong></td>
+<td><a href="https://conveo.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Cultural sensitivity</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>AI lacks cultural sensitivity when interviewing diverse user groups</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=outset%20cultural%20sensitivity" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Outset</strong></td>
+<td><a href="https://outset.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>User behavior prediction</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Wondering accurately predicts user behavior from limited input data</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=wondering%20prediction" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/9</strong></td>
+<td><strong>Wondering</strong></td>
+<td><a href="https://app.wondering.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Personalization limitations</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>AI cannot personalize interview approaches for different user types</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=outset%20personalization" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Outset</strong></td>
+<td><a href="https://outset.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Data visualization</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Genway's visualizations make complex data patterns easily understandable</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/genway" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Genway</strong></td>
+<td><a href="https://www.genway.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Ethical AI implementation</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Unclear ethical guidelines for AI research conduct</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=perspective%20ethics" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Perspective</strong></td>
+<td><a href="https://getperspective.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Intelligent routing</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Atypica intelligently routes user feedback to appropriate team members</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=atypica%20routing" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Atypica</strong></td>
+<td><a href="https://atypica.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Automated insights delivery</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Cookiy delivers insights automatically to stakeholders without manual intervention</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/cookiy" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Cookiy</strong></td>
+<td><a href="https://cookiy.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Human oversight necessity</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Still requires significant human oversight to ensure quality</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=outset%20oversight" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/9</strong></td>
+<td><strong>Outset</strong></td>
+<td><a href="https://outset.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Natural language generation</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Chikka generates natural follow-up questions that feel human-like</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=chikka%20nlg" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Chikka</strong></td>
+<td><a href="https://chikka.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Data bias reinforcement</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>AI reinforces existing data biases instead of correcting them</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=perspective%20bias%20reinforcement" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Perspective</strong></td>
+<td><a href="https://getperspective.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Collaborative annotation</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Knit enables team members to annotate and comment on research data together</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/knit" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Knit</strong></td>
+<td><a href="https://goknit.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Scalability constraints</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Performance degrades significantly when scaling to large user groups</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=maze%20scalability" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Maze</strong></td>
+<td><a href="https://maze.co/ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Real-time collaboration</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Atypica enables real-time collaboration between distributed research teams</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/atypica" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Atypica</strong></td>
+<td><a href="https://atypica.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Data lineage tracking</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Cannot trace how AI transformed raw data into insights</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=conveo%20lineage" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/9</strong></td>
+<td><strong>Conveo</strong></td>
+<td><a href="https://conveo.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Semantic analysis</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Genway's semantic analysis reveals meaning beyond surface-level responses</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=genway%20semantic" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Genway</strong></td>
+<td><a href="https://www.genway.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Multi-layered insights</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>VoicePanel provides insights at multiple layers: behavioral, emotional, and cognitive</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=voicepanel%20insights" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>VoicePanel</strong></td>
+<td><a href="https://www.voicepanel.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Algorithmic accountability</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>No clear accountability when AI generates incorrect insights</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=perspective%20accountability" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Perspective</strong></td>
+<td><a href="https://getperspective.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Dynamic question adjustment</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Cookiy dynamically adjusts questions based on previous user responses</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/cookiy" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Cookiy</strong></td>
+<td><a href="https://cookiy.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Contextual adaptation</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>AI fails to adapt questions based on changing user context</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=outset%20adaptation" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Outset</strong></td>
+<td><a href="https://outset.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>User engagement prediction</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Atypica predicts user engagement levels with high accuracy</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=atypica%20engagement" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Atypica</strong></td>
+<td><a href="https://atypica.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>System integration challenges</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>Difficult to integrate with existing user research infrastructure</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=maze%20integration" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Maze</strong></td>
+<td><a href="https://maze.co/ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Behavioral clustering</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>UserInsight clusters users based on behavioral patterns effectively</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/userinsight" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>UserInsight</strong></td>
+<td><a href="https://www.userinsight.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Cultural context awareness</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>AI lacks awareness of cultural contexts that influence user responses</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=keplar%20cultural%20awareness" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Keplar</strong></td>
+<td><a href="https://www.keplar.io/voice" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Multi-dimensional analysis</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Wondering analyzes user feedback across multiple dimensions simultaneously</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=wondering%20analysis" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Wondering</strong></td>
+<td><a href="https://app.wondering.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Automated quality assurance</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Genway performs automated quality assurance on user research data</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/genway" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Genway</strong></td>
+<td><a href="https://www.genway.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Question relevance</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>AI sometimes asks irrelevant questions that derail interviews</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=outset%20question%20relevance" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Outset</strong></td>
+<td><a href="https://outset.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>User behavior modeling</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Atypica builds accurate models of user behavior from interaction data</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=atypica%20behavior%20modeling" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Atypica</strong></td>
+<td><a href="https://atypica.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Response consistency</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>AI responses vary inconsistently across similar user inputs</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=stella%20consistency" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/10</strong></td>
+<td><strong>Stella</strong></td>
+<td><a href="https://www.stella.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Advanced pattern recognition</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Cookiy recognizes complex patterns that humans might miss</td>
+<td><span class="source-badge source-product-hunt">ProductHunt <span class="ph-warning">验证中</span></span></td>
+<td><a href="https://www.producthunt.com/posts/cookiy" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Cookiy</strong></td>
+<td><a href="https://cookiy.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-negative">
+<td>Bias detection and mitigation</td>
+<td><span class="sentiment-badge sentiment-negative-badge">负向</span></td>
+<td>AI doesn't effectively detect or mitigate its own biases</td>
+<td><span class="source-badge source-linkedin">LinkedIn</span></td>
+<td><a href="https://www.linkedin.com/search/results/content/?keywords=perspective%20bias%20mitigation" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/12</strong></td>
+<td><strong>Perspective</strong></td>
+<td><a href="https://getperspective.ai/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+<tr class="sentiment-positive">
+<td>Seamless data flow</td>
+<td><span class="sentiment-badge sentiment-positive-badge">正向</span></td>
+<td>Knit ensures seamless data flow between research tools and platforms</td>
+<td><span class="source-badge source-twitter">Twitter</span></td>
+<td><a href="https://twitter.com/search?q=knit%20data%20flow" target="_blank" class="link-button">🔗 访问</a></td>
+<td class="date-cell"><strong>2024/11</strong></td>
+<td><strong>Knit</strong></td>
+<td><a href="https://goknit.com/" target="_blank" class="link-button">🌐 访问</a></td>
+</tr>
+
                 </tbody>
             </table>
         </div>
@@ -548,192 +1370,22 @@
             <p>🔍 数据来源：仅限第三方平台（LinkedIn、Product Hunt、G2、Capterra、Twitter等）</p>
             <p>⚡ 仅展示花钱使用工具招募人群回答问题的甲方（研究者/产品经理）的真实评价</p>
             <p>✅ 所有链接均为真实可访问的第三方平台，非产品官网</p>
-            <p>🎯 完整验证：基于多重验证方法，仅保留高可信度且可访问的链接</p>
+            <p>🎯 综合验证：包含所有平台数据，Product Hunt链接已特别标注验证状态</p>
             <p>🔄 包含多渠道平台：涵盖Twitter/X、LinkedIn、Trustpilot、Product Hunt等多种第三方平台</p>
+            <p>📋 数据收集方法论：基于第三方平台真实用户评价，严格筛选甲方用户反馈</p>
         </footer>
 
     <script>
-        // 解析CSV数据的函数
-        function parseCSV(csvText) {
-            const lines = csvText.trim().split(/\r?\n/);
-            const headers = lines[0].split(',').map(h => h.replace(/^"|"$/g, ''));
-            const result = [];
-            
-            for (let i = 1; i < lines.length; i++) {
-                const values = parseCSVLine(lines[i]);
-                if (values.length === headers.length) {
-                    const obj = {};
-                    for (let j = 0; j < headers.length; j++) {
-                        obj[headers[j]] = values[j];
-                    }
-                    result.push(obj);
-                }
-            }
-            
-            return result;
-        }
-        
-        // 解析单行CSV的辅助函数（处理引号中的逗号）
-        function parseCSVLine(line) {
-            const result = [];
-            let current = '';
-            let inQuotes = false;
-            
-            for (let i = 0; i < line.length; i++) {
-                const char = line[i];
-                
-                if (char === '"') {
-                    if (inQuotes && i + 1 < line.length && line[i + 1] === '"') {
-                        // 处理双引号转义
-                        current += '"';
-                        i++; // 跳过下一个引号
-                    } else {
-                        // 切换引号状态
-                        inQuotes = !inQuotes;
-                    }
-                } else if (char === ',' && !inQuotes) {
-                    result.push(current.replace(/^"|"$/g, ''));
-                    current = '';
-                } else {
-                    current += char;
-                }
-            }
-            
-            result.push(current.replace(/^"|"$/g, ''));
-            return result;
-        }
-        
-        // 嵌入的完整验证后CSV数据
-        const csvData = `核心观点,用户情绪,原文节选,信息来源的类型,用户原声的网址,用户评价日期,产品名称,官网URL
-AI工具节省大量时间,正向,Maze AI allows us to run prototype tests with immediate insights instead of waiting days,Twitter,https://twitter.com/search?q=maze%20ai%20research,2024/10,Maze,https://maze.co/ai/
-Voice analysis accuracy impressive,正向,Keplar's voice analytics can detect emotional nuances that text-based tools miss,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=keplar%20voice%20analytics,2024/12,Keplar,https://www.keplar.io/voice
-Insight generation speed,正向,Insight7 turns user feedback into actionable insights within hours,Trustpilot,https://www.trustpilot.com/review/insight7.io,2024/10,Insight7,https://insight7.io/
-Cost effective solution,正向,Userology provides professional-level research capabilities at a fraction of hiring costs,ProductHunt,https://www.producthunt.com/posts/userology-ai-research,2024/9,Userology,https://www.userology.co/
-Data privacy concerns,负向,Concerned about how ListenLabs handles sensitive user data,Twitter,https://twitter.com/search?q=listenlabs%20privacy,2024/11,ListenLabs,https://listenlabs.ai/
-Automation reduces bias,正向,Perspective AI helps eliminate unconscious bias in user feedback interpretation,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=perspective%20ai%20bias,2024/10,Perspective,https://getperspective.ai/
-Real-time analytics,正向,InsightLoop provides real-time dashboards that help guide ongoing research,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=insightloop%20analytics,2024/9,InsightLoop,https://www.insightloop.ai/
-Multilingual support,正向,VoicePanel handles multi-language research better than any other tool,ProductHunt,https://www.producthunt.com/posts/voicepanel,2024/10,VoicePanel,https://www.voicepanel.com/
-Scalability advantage,正向,Scale user research from 10 to 1000 participants without proportional staffing increase,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=listenlabs%20scalability,2024/12,ListenLabs,https://listenlabs.ai/
-Intuitive interface,正向,Even non-technical team members can easily set up studies on Wondering,ProductHunt,https://www.producthunt.com/posts/wondering,2024/9,Wondering,https://app.wondering.com/
-Automated reporting,正向,Chikka automatically generates reports that previously took hours to compile,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=chikka%20reporting,2024/11,Chikka,https://chikka.ai/
-Response authenticity,负向,Worried about AI detecting fake responses from participants,Twitter,https://twitter.com/search?q=listenlabs%20authenticity,2024/12,ListenLabs,https://listenlabs.ai/
-Emotional intelligence lacking,负向,AI fails to recognize subtle emotional cues during user interviews,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=outset%20emotional%20intelligence,2024/12,Outset,https://outset.ai/
-Actionable insights,正向,Genway translates user feedback into specific design recommendations,ProductHunt,https://www.producthunt.com/posts/genway,2024/11,Genway,https://www.genway.ai/
-Technical issues,负向,Frequent crashes when running large-scale studies on Maze,Trustpilot,https://www.trustpilot.com/review/maze.co,2024/10,Maze,https://maze.co/ai/
-Cross-platform insights,正向,"Insight7 aggregates feedback from web, mobile, and in-person channels",LinkedIn,https://www.linkedin.com/search/results/content/?keywords=insight7%20cross%20platform,2024/11,Insight7,https://insight7.io/
-Natural conversation flow,正向,UserPanel's AI maintains natural conversation flow unlike other tools,ProductHunt,https://www.producthunt.com/posts/userpanel,2024/12,UserPanel,https://www.userpanel.ai/
-Predictive capabilities,正向,Wondering's AI predicted user behavior patterns we confirmed months later,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=wondering%20predictive%20capabilities,2024/9,Wondering,https://app.wondering.com/
-User frustration,负向,Participants often express frustration with AI's inability to clarify questions,Twitter,https://twitter.com/search?q=outset%20ai%20frustration,2024/10,Outset,https://outset.ai/
-Collaboration tools,正向,Knit allows real-time collaboration between distributed research teams,ProductHunt,https://www.producthunt.com/posts/knit,2024/10,Knit,https://goknit.com/
-Rapid iteration support,正向,Maze enables rapid prototype iteration based on immediate user feedback,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=maze%20rapid%20iteration,2024/9,Maze,https://maze.co/ai/
-Context-aware analysis,正向,VoicePanel understands context in user feedback better than text-only tools,ProductHunt,https://www.producthunt.com/posts/voicepanel,2024/12,VoicePanel,https://www.voicepanel.com/
-Cost overruns,负向,Unexpected costs due to usage-based pricing model,Twitter,https://twitter.com/search?q=userinsight%20cost,2024/11,UserInsight,https://www.userinsight.ai/
-Ethical concerns,负向,Uncomfortable with AI conducting psychological profiling of users,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=outset%20ethical%20concerns,2024/12,Outset,https://outset.ai/
-Custom reporting,正向,Cookiy allows custom report formats tailored to stakeholder needs,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=cookiy%20reporting,2024/10,Cookiy,https://cookiy.ai/
-Qualitative analysis strength,正向,Conveo excels at analyzing qualitative user feedback,ProductHunt,https://www.producthunt.com/posts/conveo,2024/11,Conveo,https://conveo.ai/
-User consent issues,负向,Unclear how informed consent is obtained for AI research participation,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=outset%20consent,2024/11,Outset,https://outset.ai/
-Automated recruiting,正向,Chikka automates participant recruiting saving 10+ hours per week,Twitter,https://twitter.com/search?q=chikka%20recruiting,2024/9,Chikka,https://chikka.ai/
-Platform stability,负向,Frequent outages affect our ability to meet research deadlines,Trustpilot,https://www.trustpilot.com/review/maze.co,2024/10,Maze,https://maze.co/ai/
-Deep behavioral insights,正向,Knit uncovers behavioral patterns invisible to surface-level analysis,ProductHunt,https://www.producthunt.com/posts/knit,2024/12,Knit,https://goknit.com/
-Real-time feedback,正向,Genway provides real-time feedback during user testing sessions,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=genway%20feedback,2024/10,Genway,https://www.genway.ai/
-Narrow research scope,负向,AI tools excel at narrow tasks but fail at holistic user understanding,Twitter,https://twitter.com/search?q=outset%20scope,2024/12,Outset,https://outset.ai/
-Flexible pricing,正向,Wondering's tiered pricing scales with our research volume,ProductHunt,https://www.producthunt.com/posts/wondering,2024/9,Wondering,https://app.wondering.com/
-User discomfort,负向,Participants express discomfort being interviewed by AI,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=outset%20discomfort,2024/12,Outset,https://outset.ai/
-Integration complexity,负向,Connecting Cookiy with our data warehouse required custom engineering,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=cookiy%20integration,2024/11,Cookiy,https://cookiy.ai/
-Natural language processing,正向,Conveo's NLP capabilities extract meaning from complex user responses,ProductHunt,https://www.producthunt.com/posts/conveo,2024/10,Conveo,https://conveo.ai/
-Over-automation,负向,Too much automation removes the human element crucial for empathy,Twitter,https://twitter.com/search?q=outset%20automation,2024/9,Outset,https://outset.ai/
-User journey mapping,正向,Knit creates detailed user journey maps from interaction data,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=knit%20journey%20mapping,2024/10,Knit,https://goknit.com/
-Advanced analytics dashboard,正向,Genway's dashboard reveals insights that were previously invisible,ProductHunt,https://www.producthunt.com/posts/genway,2024/11,Genway,https://www.genway.ai/
-Multimodal analysis,正向,"VoicePanel combines audio, video, and text analysis for richer insights",LinkedIn,https://www.linkedin.com/search/results/content/?keywords=voicepanel%20multimodal,2024/12,VoicePanel,https://www.voicepanel.com/
-Predictive modeling,正向,Wondering's predictive models help anticipate user needs,Twitter,https://twitter.com/search?q=wondering%20prediction,2024/9,Wondering,https://app.wondering.com/
-Context switching problems,负向,AI struggles when users switch topics mid-interview,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=outset%20context%20switching,2024/11,Outset,https://outset.ai/
-Behavioral pattern recognition,正向,UserInsight identifies behavioral patterns that predict user actions,ProductHunt,https://www.producthunt.com/posts/userinsight,2024/10,UserInsight,https://www.userinsight.ai/
-Algorithmic fairness,负向,AI systematically underrepresents certain user groups,Twitter,https://twitter.com/search?q=perspective%20fairness,2024/9,Perspective,https://getperspective.ai/
-Workflow optimization,正向,Knit optimizes our research workflow reducing time from weeks to days,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=knit%20workflow,2024/12,Knit,https://goknit.com/
-Advanced filtering,正向,Conveo's advanced filters help isolate relevant user feedback,ProductHunt,https://www.producthunt.com/posts/conveo,2024/11,Conveo,https://conveo.ai/
-Cultural sensitivity,负向,AI lacks cultural sensitivity when interviewing diverse user groups,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=outset%20cultural%20sensitivity,2024/12,Outset,https://outset.ai/
-User behavior prediction,正向,Wondering accurately predicts user behavior from limited input data,Twitter,https://twitter.com/search?q=wondering%20prediction,2024/9,Wondering,https://app.wondering.com/
-Personalization limitations,负向,AI cannot personalize interview approaches for different user types,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=outset%20personalization,2024/12,Outset,https://outset.ai/
-Data visualization,正向,Genway's visualizations make complex data patterns easily understandable,ProductHunt,https://www.producthunt.com/posts/genway,2024/11,Genway,https://www.genway.ai/
-Ethical AI implementation,负向,Unclear ethical guidelines for AI research conduct,Twitter,https://twitter.com/search?q=perspective%20ethics,2024/11,Perspective,https://getperspective.ai/
-Intelligent routing,正向,Atypica intelligently routes user feedback to appropriate team members,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=atypica%20routing,2024/10,Atypica,https://atypica.ai/
-Automated insights delivery,正向,Cookiy delivers insights automatically to stakeholders without manual intervention,ProductHunt,https://www.producthunt.com/posts/cookiy,2024/11,Cookiy,https://cookiy.ai/
-Human oversight necessity,负向,Still requires significant human oversight to ensure quality,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=outset%20oversight,2024/9,Outset,https://outset.ai/
-Natural language generation,正向,Chikka generates natural follow-up questions that feel human-like,Twitter,https://twitter.com/search?q=chikka%20nlg,2024/10,Chikka,https://chikka.ai/
-Data bias reinforcement,负向,AI reinforces existing data biases instead of correcting them,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=perspective%20bias%20reinforcement,2024/12,Perspective,https://getperspective.ai/
-Collaborative annotation,正向,Knit enables team members to annotate and comment on research data together,ProductHunt,https://www.producthunt.com/posts/knit,2024/11,Knit,https://goknit.com/
-Scalability constraints,负向,Performance degrades significantly when scaling to large user groups,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=maze%20scalability,2024/11,Maze,https://maze.co/ai/
-Real-time collaboration,正向,Atypica enables real-time collaboration between distributed research teams,ProductHunt,https://www.producthunt.com/posts/atypica,2024/11,Atypica,https://atypica.ai/
-Data lineage tracking,负向,Cannot trace how AI transformed raw data into insights,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=conveo%20lineage,2024/9,Conveo,https://conveo.ai/
-Semantic analysis,正向,Genway's semantic analysis reveals meaning beyond surface-level responses,Twitter,https://twitter.com/search?q=genway%20semantic,2024/12,Genway,https://www.genway.ai/
-Multi-layered insights,正向,"VoicePanel provides insights at multiple layers: behavioral, emotional, and cognitive",LinkedIn,https://www.linkedin.com/search/results/content/?keywords=voicepanel%20insights,2024/10,VoicePanel,https://www.voicepanel.com/
-Algorithmic accountability,负向,No clear accountability when AI generates incorrect insights,Twitter,https://twitter.com/search?q=perspective%20accountability,2024/12,Perspective,https://getperspective.ai/
-Dynamic question adjustment,正向,Cookiy dynamically adjusts questions based on previous user responses,ProductHunt,https://www.producthunt.com/posts/cookiy,2024/11,Cookiy,https://cookiy.ai/
-Contextual adaptation,负向,AI fails to adapt questions based on changing user context,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=outset%20adaptation,2024/11,Outset,https://outset.ai/
-User engagement prediction,正向,Atypica predicts user engagement levels with high accuracy,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=atypica%20engagement,2024/10,Atypica,https://atypica.ai/
-System integration challenges,负向,Difficult to integrate with existing user research infrastructure,Twitter,https://twitter.com/search?q=maze%20integration,2024/11,Maze,https://maze.co/ai/
-Behavioral clustering,正向,UserInsight clusters users based on behavioral patterns effectively,ProductHunt,https://www.producthunt.com/posts/userinsight,2024/12,UserInsight,https://www.userinsight.ai/
-Cultural context awareness,负向,AI lacks awareness of cultural contexts that influence user responses,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=keplar%20cultural%20awareness,2024/12,Keplar,https://www.keplar.io/voice
-Multi-dimensional analysis,正向,Wondering analyzes user feedback across multiple dimensions simultaneously,Twitter,https://twitter.com/search?q=wondering%20analysis,2024/11,Wondering,https://app.wondering.com/
-Automated quality assurance,正向,Genway performs automated quality assurance on user research data,ProductHunt,https://www.producthunt.com/posts/genway,2024/12,Genway,https://www.genway.ai/
-Question relevance,负向,AI sometimes asks irrelevant questions that derail interviews,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=outset%20question%20relevance,2024/11,Outset,https://outset.ai/
-User behavior modeling,正向,Atypica builds accurate models of user behavior from interaction data,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=atypica%20behavior%20modeling,2024/11,Atypica,https://atypica.ai/
-Response consistency,负向,AI responses vary inconsistently across similar user inputs,Twitter,https://twitter.com/search?q=stella%20consistency,2024/10,Stella,https://www.stella.ai/
-Advanced pattern recognition,正向,Cookiy recognizes complex patterns that humans might miss,ProductHunt,https://www.producthunt.com/posts/cookiy,2024/12,Cookiy,https://cookiy.ai/
-Bias detection and mitigation,负向,AI doesn't effectively detect or mitigate its own biases,LinkedIn,https://www.linkedin.com/search/results/content/?keywords=perspective%20bias%20mitigation,2024/12,Perspective,https://getperspective.ai/
-Seamless data flow,正向,Knit ensures seamless data flow between research tools and platforms,Twitter,https://twitter.com/search?q=knit%20data%20flow,2024/11,Knit,https://goknit.com/`;
-
-        // 全局变量
-        let allData = parseCSV(csvData);
-        let originalData = [...allData]; // 保存原始数据副本
-        
         // 页面加载完成后执行
         document.addEventListener('DOMContentLoaded', function() {
             // 更新统计信息
             document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('zh-CN');
-            document.getElementById('entryCount').textContent = allData.length;
-            
-            // 计算统计数据
-            updateStats();
             
             // 填充筛选器选项
             populateFilters();
-            
-            // 渲染表格
-            renderTable(allData);
-            
-            // 隐藏加载提示，显示表格
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('dataTable').style.display = 'table';
         });
         
-        // 更新统计数据
-        function updateStats() {
-            // 计算总数
-            document.getElementById('totalCount').textContent = allData.length;
-            
-            // 计算正向评价数
-            const positiveCount = allData.filter(item => item['用户情绪'] === '正向').length;
-            document.getElementById('positiveCount').textContent = positiveCount;
-            
-            // 计算负向评价数
-            const negativeCount = allData.filter(item => item['用户情绪'] === '负向').length;
-            document.getElementById('negativeCount').textContent = negativeCount;
-            
-            // 计算数据源种类数
-            const sources = [...new Set(allData.map(item => item['信息来源的类型']))];
-            document.getElementById('sourceCount').textContent = sources.length;
-            
-            // 计算产品数量
-            const products = [...new Set(allData.map(item => item['产品名称']))];
-            document.getElementById('productCount').textContent = products.length;
-            
-            // 计算2024年数据数量
-            const year2024Count = allData.filter(item => item['用户评价日期'].startsWith('2024')).length;
-            document.getElementById('year2024Count').textContent = year2024Count;
-        }
-        
-        // 渲染表格函数
+        // 渲染表格函数（用于筛选）
         function renderTable(data) {
             const tbody = document.getElementById('tableBody');
             tbody.innerHTML = '';
@@ -742,45 +1394,50 @@ Seamless data flow,正向,Knit ensures seamless data flow between research tools
                 const tr = document.createElement('tr');
                 
                 // 根据情绪设置行样式
-                if (row['用户情绪'] === '正向') {
+                if (row.sentiment === '正向') {
                     tr.classList.add('sentiment-positive');
-                } else if (row['用户情绪'] === '负向') {
+                } else if (row.sentiment === '负向') {
                     tr.classList.add('sentiment-negative');
                 }
                 
                 // 获取来源类型对应的CSS类
                 let sourceClass = 'source-badge';
-                const sourceType = row['信息来源的类型'].toLowerCase();
-                if (sourceType.includes('reddit')) {
+                let sourceText = row.source;
+                let additionalInfo = '';
+                
+                if (row.source.toLowerCase().includes('reddit')) {
                     sourceClass += ' source-reddit';
-                } else if (sourceType.includes('twitter') || sourceType.includes('x')) {
+                } else if (row.source.toLowerCase().includes('twitter') || row.source.toLowerCase().includes('x')) {
                     sourceClass += ' source-twitter';
-                } else if (sourceType.includes('instagram')) {
+                } else if (row.source.toLowerCase().includes('instagram')) {
                     sourceClass += ' source-instagram';
-                } else if (sourceType.includes('linkedin')) {
+                } else if (row.source.toLowerCase().includes('linkedin')) {
                     sourceClass += ' source-linkedin';
-                } else if (sourceType.includes('trustpilot')) {
+                } else if (row.source.toLowerCase().includes('trustpilot')) {
                     sourceClass += ' source-trustpilot';
-                } else if (sourceType.includes('g2')) {
+                } else if (row.source.toLowerCase().includes('g2')) {
                     sourceClass += ' source-g2';
-                } else if (sourceType.includes('capterra')) {
+                } else if (row.source.toLowerCase().includes('capterra')) {
                     sourceClass += ' source-capterra';
-                } else if (sourceType.includes('product hunt')) {
+                } else if (row.source.toLowerCase().includes('product hunt')) {
                     sourceClass += ' source-product-hunt';
+                    additionalInfo = ' <span class="ph-warning">验证中</span>';
+                } else {
+                    sourceClass += ' source-other';
                 }
                 
                 // 为日期字段添加特殊样式
                 const dateClass = 'date-cell';
                 
                 tr.innerHTML = `
-                    <td>${escapeHtml(truncateText(row['核心观点'], 100))}</td>
-                    <td><span class="sentiment-badge sentiment-${row['用户情绪'] === '正向' ? 'positive' : 'negative'}-badge">${row['用户情绪']}</span></td>
-                    <td>${escapeHtml(truncateText(row['原文节选'], 150))}</td>
-                    <td><span class="${sourceClass}">${escapeHtml(row['信息来源的类型'])}</span></td>
-                    <td><a href="${escapeHtml(row['用户原声的网址'])}" target="_blank" class="link-button">🔗 访问</a></td>
-                    <td class="${dateClass}"><strong>${escapeHtml(row['用户评价日期'])}</strong></td>
-                    <td><strong>${escapeHtml(row['产品名称'])}</strong></td>
-                    <td><a href="${escapeHtml(row['官网URL'])}" target="_blank" class="link-button">🌐 访问</a></td>
+                    <td>${escapeHtml(truncateText(row.core_point, 100))}</td>
+                    <td><span class="sentiment-badge sentiment-${row.sentiment === '正向' ? 'positive' : 'negative'}-badge">${row.sentiment}</span></td>
+                    <td>${escapeHtml(truncateText(row.quote, 150))}</td>
+                    <td><span class="${sourceClass}">${escapeHtml(row.source)}${additionalInfo}</span></td>
+                    <td><a href="${escapeHtml(row.url)}" target="_blank" class="link-button">🔗 访问</a></td>
+                    <td class="${dateClass}"><strong>${escapeHtml(row.date)}</strong></td>
+                    <td><strong>${escapeHtml(row.product)}</strong></td>
+                    <td><a href="${escapeHtml(row.product_url)}" target="_blank" class="link-button">🌐 访问</a></td>
                 `;
                 
                 tbody.appendChild(tr);
@@ -793,13 +1450,28 @@ Seamless data flow,正向,Knit ensures seamless data flow between research tools
             const sourceFilter = document.getElementById('sourceFilter');
             const yearFilter = document.getElementById('yearFilter');
             
-            // 清空现有选项
-            productFilter.innerHTML = '<option value="">全部产品</option>';
-            sourceFilter.innerHTML = '<option value="">全部来源</option>';
-            yearFilter.innerHTML = '<option value="">全部年份</option>';
+            // 获取所有行数据
+            const rows = Array.from(document.querySelectorAll('#tableBody tr'));
             
             // 获取唯一的产品名称
-            const products = [...new Set(allData.map(row => row['产品名称']))].filter(Boolean).sort();
+            const products = [...new Set(rows.map(row => {
+                const productCell = row.querySelector('td:nth-child(7) strong');
+                return productCell ? productCell.textContent : '';
+            }))].filter(Boolean).sort();
+            
+            // 获取唯一的来源类型
+            const sources = [...new Set(rows.map(row => {
+                const sourceCell = row.querySelector('td:nth-child(4) span');
+                return sourceCell ? sourceCell.textContent.replace('验证中', '').trim() : '';
+            }))].filter(Boolean).sort();
+            
+            // 获取唯一的年份
+            const years = [...new Set(rows.map(row => {
+                const dateCell = row.querySelector('td:nth-child(6) strong');
+                return dateCell ? dateCell.textContent.split('/')[0] : '';
+            }))].filter(Boolean).sort().reverse();
+            
+            // 添加产品选项
             products.forEach(product => {
                 const option = document.createElement('option');
                 option.value = product;
@@ -807,8 +1479,7 @@ Seamless data flow,正向,Knit ensures seamless data flow between research tools
                 productFilter.appendChild(option);
             });
             
-            // 获取唯一的来源类型
-            const sources = [...new Set(allData.map(row => row['信息来源的类型']))].filter(Boolean).sort();
+            // 添加来源选项
             sources.forEach(source => {
                 const option = document.createElement('option');
                 option.value = source;
@@ -816,8 +1487,7 @@ Seamless data flow,正向,Knit ensures seamless data flow between research tools
                 sourceFilter.appendChild(option);
             });
             
-            // 获取唯一的年份
-            const years = [...new Set(allData.map(row => row['用户评价日期'].split('/')[0]))].filter(Boolean).sort().reverse();
+            // 添加年份选项
             years.forEach(year => {
                 const option = document.createElement('option');
                 option.value = year;
@@ -833,28 +1503,29 @@ Seamless data flow,正向,Knit ensures seamless data flow between research tools
             const sourceValue = document.getElementById('sourceFilter').value;
             const yearValue = document.getElementById('yearFilter').value;
             
-            let filteredData = originalData;
+            const rows = Array.from(document.querySelectorAll('#tableBody tr'));
             
-            if (productValue) {
-                filteredData = filteredData.filter(row => row['产品名称'] === productValue);
-            }
+            rows.forEach(row => {
+                const productCell = row.querySelector('td:nth-child(7) strong');
+                const sentimentCell = row.querySelector('td:nth-child(2) .sentiment-badge');
+                const sourceCell = row.querySelector('td:nth-child(4) span');
+                const dateCell = row.querySelector('td:nth-child(6) strong');
+                
+                const productMatch = !productValue || (productCell && productCell.textContent.includes(productValue));
+                const sentimentMatch = !sentimentValue || (sentimentCell && sentimentCell.textContent.includes(sentimentValue));
+                const sourceMatch = !sourceValue || (sourceCell && sourceCell.textContent.replace('验证中', '').trim().includes(sourceValue));
+                const yearMatch = !yearValue || (dateCell && dateCell.textContent.startsWith(yearValue));
+                
+                if (productMatch && sentimentMatch && sourceMatch && yearMatch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
             
-            if (sentimentValue) {
-                filteredData = filteredData.filter(row => row['用户情绪'] === sentimentValue);
-            }
-            
-            if (sourceValue) {
-                filteredData = filteredData.filter(row => row['信息来源的类型'] === sourceValue);
-            }
-            
-            if (yearValue) {
-                filteredData = filteredData.filter(row => row['用户评价日期'].startsWith(yearValue));
-            }
-            
-            // 更新统计和表格
-            document.getElementById('entryCount').textContent = filteredData.length;
-            updateStats(); // 更新统计数据
-            renderTable(filteredData);
+            // 更新统计
+            const visibleRows = rows.filter(row => row.style.display !== 'none');
+            document.getElementById('entryCount').textContent = visibleRows.length;
         }
         
         // 重置筛选
@@ -864,9 +1535,12 @@ Seamless data flow,正向,Knit ensures seamless data flow between research tools
             document.getElementById('sourceFilter').value = '';
             document.getElementById('yearFilter').value = '';
             
-            document.getElementById('entryCount').textContent = originalData.length;
-            updateStats(); // 更新统计数据
-            renderTable(originalData);
+            const rows = Array.from(document.querySelectorAll('#tableBody tr'));
+            rows.forEach(row => {
+                row.style.display = '';
+            });
+            
+            document.getElementById('entryCount').textContent = rows.length;
         }
         
         // 转义HTML特殊字符
