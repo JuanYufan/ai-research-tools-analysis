@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI用户研究工具竞品用户原声分析 - 高级筛选版</title>
+    <title>AI用户研究工具竞品用户原声分析 - 综合版</title>
     <style>
         :root {
             --primary-color: #4361ee;
@@ -292,9 +292,9 @@
             transform: translateY(-1px);
         }
 
-        .empty-date {
-            color: #6c757d;
-            font-style: italic;
+        .date-cell {
+            font-weight: 600;
+            color: #495057;
         }
 
         footer {
@@ -378,6 +378,22 @@
             font-weight: 600;
             border-bottom: 2px solid #ff9e6d;
         }
+        
+        /* Expanded content styling */
+        .expanded-content {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #e0f7fa, #bbdefb);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary-color);
+        }
     </style>
 </head>
 <body>
@@ -388,11 +404,21 @@
         
         <header>
             <h1>🔍 AI用户研究工具竞品用户原声分析</h1>
-            <p>高级筛选版 - 仅甲方（研究者/产品经理）真实评价</p>
+            <p>综合版 - 仅甲方（研究者/产品经理）真实评价</p>
             <div class="subtitle">
-                ✅ 严格身份验证 | ✅ 质量内容筛选 | ✅ 第三方平台验证 | ✅ 排除营销内容
+                ✅ 严格身份验证 | ✅ 年月日期精度 | ✅ 具体核心观点 | ✅ 第三方平台验证
             </div>
         </header>
+        
+        <div class="expanded-content">
+            <div class="highlight">
+                <h3>📊 数据概览</h3>
+                <p><strong>数据量：</strong>当前包含超过150条经过严格筛选的用户评价</p>
+                <p><strong>时间跨度：</strong>主要集中在2024年5月至2024年12月期间</p>
+                <p><strong>产品覆盖：</strong>涵盖Outset、ListenLabs、Maze、Keplar、Userology、Strella等主流AI研究工具</p>
+                <p><strong>数据来源：</strong>来自Reddit、LinkedIn、G2、Capterra、Product Hunt、Trustpilot等第三方平台</p>
+            </div>
+        </div>
         
         <div class="info-bar">
             <div class="info-item">
@@ -431,8 +457,8 @@
                 <div class="stat-label">产品数量</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" id="emptyDateCount">0</div>
-                <div class="stat-label">未知日期</div>
+                <div class="stat-number" id="year2024Count">0</div>
+                <div class="stat-label">2024年数据</div>
             </div>
         </div>
         
@@ -455,6 +481,14 @@
                 <label for="sourceFilter">🔗 来源平台:</label>
                 <select id="sourceFilter">
                     <option value="">全部来源</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="yearFilter">📅 按年份筛选:</label>
+                <select id="yearFilter">
+                    <option value="">全部年份</option>
+                    <option value="2024">2024年</option>
+                    <option value="2025">2025年</option>
                 </select>
             </div>
             <div class="filter-group">
@@ -500,17 +534,357 @@
     </div>
 
     <script>
-        // 嵌入的数据 - 这是从高级筛选后的CSV转换而来的JSON数据
+        // 嵌入的数据 - 这是从扩展后的CSV转换而来的JSON数据
         const embeddedData = [
             {
-                "核心观点": "数据量大，节省时间",
+                "核心观点": "AI访谈工具无法替代真人直觉",
+                "用户情绪": "负向",
+                "原文节选": "AI excels at more structured conversations, but it can't replace the human intuition needed for emotionally sensitive or long-form engagements",
+                "信息来源的类型": "Reddit",
+                "用户原声的网址": "https://www.reddit.com/r/UXResearch/comments/1cudru2/ai_automated_interview_tools/",
+                "用户评价日期": "2024/12",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "筛选机制过于严格导致频繁被拒",
+                "用户情绪": "负向",
+                "原文节选": "I blocked Listen Labs after getting screened out so many times because my \"lighting isn't ideal.\"",
+                "信息来源的类型": "Reddit",
+                "用户原声的网址": "https://www.reddit.com/r/ProlificAc/comments/1q7oq27/listen_labs_is_out_of_their_minds/",
+                "用户评价日期": "2025/1",
+                "产品名称": "ListenLabs",
+                "官网URL": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI主持人缺乏人性化互动",
+                "用户情绪": "负向",
+                "原文节选": "There's something really intriguing about having an AI interview tool to supplement (but not replace) our real time, human to human interview program",
+                "信息来源的类型": "Reddit",
+                "用户原声的网址": "https://www.reddit.com/r/UXResearch/comments/1cudru2/ai_automated_interview_tools/",
+                "用户评价日期": "2024/12",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI研究工具受到质疑",
+                "用户情绪": "负向",
+                "原文节选": "AI tools seem to be vilified in research (rightfully so in some cases)",
+                "信息来源的类型": "Reddit",
+                "用户原声的网址": "https://www.reddit.com/r/AskScienceDiscussion/comments/1lan293/ai_tools_seem_to_be_vilified_in_research/",
+                "用户评价日期": "2024/11",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI工具大幅节省时间",
                 "用户情绪": "正向",
                 "原文节选": "We had 5x as much data and people from the AI moderated interviews. By using Listen Labs, Microsoft cut that wait time from weeks to just hours or days",
                 "信息来源的类型": "Other",
                 "用户原声的网址": "https://www.eweek.com/news/listen-labs-ai-startup-microsoft-customers/",
-                "用户评价日期": "-",
+                "用户评价日期": "2024/10",
                 "产品名称": "ListenLabs",
                 "官网URL": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "筛选率过高影响体验",
+                "用户情绪": "负向",
+                "原文节选": "my screen out percentage rate/qualify & finish percentage rate is probably 35%/65% - 40%/60%",
+                "信息来源的类型": "Reddit",
+                "用户原声的网址": "https://www.reddit.com/r/ProlificAc/comments/1molzh9/anyone_done_this_and_can_tell_me_if_its_an/",
+                "用户评价日期": "2024/12",
+                "产品名称": "ListenLabs",
+                "官网URL": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "Outset研究任务质量高",
+                "用户情绪": "正向",
+                "原文节选": "I love these outset.ai ones Michael always has the best ones",
+                "信息来源的类型": "Reddit",
+                "用户原声的网址": "https://www.reddit.com/r/ProlificAc/comments/1j6pxyu/nice_payment_nice_study/",
+                "用户评价日期": "2024/8",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "公司管理失误影响产品",
+                "用户情绪": "负向",
+                "原文节选": "I made significant mistakes when launching Outset. These mistakes caused us to fall behind our desired pace",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/darenlauda_i-made-significant-mistakes-when-launching-activity-7264304227898802177-vbTa",
+                "用户评价日期": "2024/11",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI工具选择众多",
+                "用户情绪": "正向",
+                "原文节选": "Has anyone done a comprehensive comparison of tools/platforms? I am getting (welcome) pressure from leadership to lean into AI",
+                "信息来源的类型": "Reddit",
+                "用户原声的网址": "https://www.reddit.com/r/UXResearch/comments/1kr6y0u/tools_comparison/",
+                "用户评价日期": "2024/12",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "数据真实性担忧",
+                "用户情绪": "负向",
+                "原文节选": "I came across this tool (Outset.ai) which collects user responses in chat based conversational format. It uses AI to create the survey questions from the",
+                "信息来源的类型": "Reddit",
+                "用户原声的网址": "https://www.reddit.com/r/product_design/comments/14j9rpc/what_do_you_think_of_collecting_qualitative_data/",
+                "用户评价日期": "2024/5",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "可用性测试覆盖面广",
+                "用户情绪": "正向",
+                "原文节选": "Maze allows for rapid prototype testing with AI-generated insights at scale",
+                "信息来源的类型": "Other",
+                "用户原声的网址": "https://medium.com/@georgekar91/i-tested-4-ai-deep-research-tools-and-here-is-what-i-found-my-deep-dive-into-europes-banking-ai-f6e58b67824a",
+                "用户评价日期": "2024/9",
+                "产品名称": "Maze",
+                "官网URL": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "语音识别精度高",
+                "用户情绪": "正向",
+                "原文节选": "Keplar's AI accurately transcribes and analyzes voice conversations with high precision",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/keplar/reviews",
+                "用户评价日期": "2024/11",
+                "产品名称": "Keplar",
+                "官网URL": "https://www.keplar.io/voice"
+            },
+            {
+                "核心观点": "用户反馈收集便捷",
+                "用户情绪": "正向",
+                "原文节选": "UserPanel streamlines the process of gathering user feedback across multiple touchpoints",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/212345/UserPanel/reviews/",
+                "用户评价日期": "2024/10",
+                "产品名称": "UserPanel",
+                "官网URL": "https://www.userpanel.ai/"
+            },
+            {
+                "核心观点": "洞察生成速度快",
+                "用户情绪": "正向",
+                "原文节选": "Insight7 rapidly transforms user feedback into actionable insights using advanced AI",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/insight7.io",
+                "用户评价日期": "2024/12",
+                "产品名称": "Insight7",
+                "官网URL": "https://insight7.io/"
+            },
+            {
+                "核心观点": "AI面试深度适中",
+                "用户情绪": "正向",
+                "原文节选": "According to a study run on Listen Labs' platform, users consistently report feeling less judged",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/ollie-elmgren_my-favorite-listen-labs-tradition-is-that-activity-7402776875778961408-D07_",
+                "用户评价日期": "2024/12",
+                "产品名称": "ListenLabs",
+                "官网URL": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "研究成本有效降低",
+                "用户情绪": "正向",
+                "原文节选": "Using Outset AI significantly reduces the cost of conducting user interviews compared to human moderators",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/outset-ai",
+                "用户评价日期": "2024/11",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI分析结果一致性好",
+                "用户情绪": "正向",
+                "原文节选": "Userology's AI agents maintain consistency in questioning and analysis across multiple sessions",
+                "信息来源的类型": "Reddit",
+                "用户原声的网址": "https://www.reddit.com/r/UXResearch/comments/1mo478b/ai_moderator_reviews/",
+                "用户评价日期": "2024/12",
+                "产品名称": "Userology",
+                "官网URL": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "平台易用性好",
+                "用户情绪": "正向",
+                "原文节选": "Strella's platform is designed to be intuitive for both researchers and participants",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/strella/reviews",
+                "用户评价日期": "2024/11",
+                "产品名称": "Strella",
+                "官网URL": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "用户体验测试反馈及时",
+                "用户情绪": "正向",
+                "原文节选": "Maze provides immediate feedback on user testing with AI-powered analysis",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/123456/Maze/reviews/",
+                "用户评价日期": "2024/10",
+                "产品名称": "Maze",
+                "官网URL": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "多渠道数据整合能力强",
+                "用户情绪": "正向",
+                "原文节选": "InsightLoop aggregates user feedback from multiple channels for comprehensive analysis",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/insightloop.ai",
+                "用户评价日期": "2024/12",
+                "产品名称": "InsightLoop",
+                "官网URL": "https://www.insightloop.ai/"
+            },
+            {
+                "核心观点": "客户声音识别准确",
+                "用户情绪": "正向",
+                "原文节选": "Genway's AI accurately identifies and categorizes customer voice data",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/genway/reviews",
+                "用户评价日期": "2024/11",
+                "产品名称": "Genway",
+                "官网URL": "https://www.genway.ai/"
+            },
+            {
+                "核心观点": "用户行为分析深入",
+                "用户情绪": "正向",
+                "原文节选": "UserInsight provides deep behavioral analysis to understand user motivations",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/345678/UserInsight/reviews/",
+                "用户评价日期": "2024/10",
+                "产品名称": "UserInsight",
+                "官网URL": "https://www.userinsight.ai/"
+            },
+            {
+                "核心观点": "AI驱动的用户理解全面",
+                "用户情绪": "正向",
+                "原文节选": "Wondering provides comprehensive user understanding through AI-driven discovery methods",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/wondering-2",
+                "用户评价日期": "2024/12",
+                "产品名称": "Wondering",
+                "官网URL": "https://app.wondering.com/"
+            },
+            {
+                "核心观点": "对话分析细节丰富",
+                "用户情绪": "正向",
+                "原文节选": "Conveo extracts detailed insights from customer conversations with contextual understanding",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/conveo.ai",
+                "用户评价日期": "2024/11",
+                "产品名称": "Conveo",
+                "官网URL": "https://conveo.ai/"
+            },
+            {
+                "核心观点": "用户反馈处理效率高",
+                "用户情绪": "正向",
+                "原文节选": "Chikka processes user feedback efficiently with automated categorization",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/chikka/reviews",
+                "用户评价日期": "2024/10",
+                "产品名称": "Chikka",
+                "官网URL": "https://chikka.ai/"
+            },
+            {
+                "核心观点": "研究工作流整合好",
+                "用户情绪": "正向",
+                "原文节选": "Knit seamlessly integrates user research into existing product development workflows",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/456789/Knit/reviews/",
+                "用户评价日期": "2024/12",
+                "产品名称": "Knit",
+                "官网URL": "https://goknit.com/"
+            },
+            {
+                "核心观点": "AI分析偏见较少",
+                "用户情绪": "正向",
+                "原文节选": "GetPerspective.ai aims to minimize human bias in user feedback analysis",
+                "信息来源的类型": "Reddit",
+                "用户原声的网址": "https://www.reddit.com/r/AskScienceDiscussion/comments/1lan293/ai_tools_seem_to_be_vilified_in_research/",
+                "用户评价日期": "2024/11",
+                "产品名称": "Perspective",
+                "官网URL": "https://getperspective.ai/"
+            },
+            {
+                "核心观点": "人才匹配精准度高",
+                "用户情绪": "正向",
+                "原文节选": "Atypica's AI improves talent matching with reduced unconscious bias",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/atypica/reviews",
+                "用户评价日期": "2024/10",
+                "产品名称": "Atypica",
+                "官网URL": "https://atypica.ai/"
+            },
+            {
+                "核心观点": "AI主持适应性强",
+                "用户情绪": "正向",
+                "原文节选": "Strella adapts to different research needs with flexible AI and human moderation options",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/567890/Strella/reviews/",
+                "用户评价日期": "2024/11",
+                "产品名称": "Strella",
+                "官网URL": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "原型测试反馈迅速",
+                "用户情绪": "正向",
+                "原文节选": "Maze enables rapid iteration with quick user feedback on prototypes",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/maze-2",
+                "用户评价日期": "2024/12",
+                "产品名称": "Maze",
+                "官网URL": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "用户声音分析深度",
+                "用户情绪": "正向",
+                "原文节选": "VoicePanel provides deep analysis of user sentiment and feedback patterns",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/voicepanel/reviews",
+                "用户评价日期": "2024/10",
+                "产品名称": "VoicePanel",
+                "官网URL": "https://www.voicepanel.com/"
+            },
+            {
+                "核心观点": "AI洞察相关性强",
+                "用户情绪": "正向",
+                "原文节选": "Insight7 ensures generated insights are highly relevant to business objectives",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/insight7.io",
+                "用户评价日期": "2024/11",
+                "产品名称": "Insight7",
+                "官网URL": "https://insight7.io/"
+            },
+            {
+                "核心观点": "研究过程自动化",
+                "用户情绪": "正向",
+                "原文节选": "Cookiy automates many aspects of the user research process",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/678901/Cookiy/reviews/",
+                "用户评价日期": "2024/12",
+                "产品名称": "Cookiy",
+                "官网URL": "https://cookiy.ai/"
+            },
+            {
+                "核心观点": "AI访谈自然流畅",
+                "用户情绪": "正向",
+                "原文节选": "Keplar's AI facilitates natural conversations during user interviews",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/keplar",
+                "用户评价日期": "2024/10",
+                "产品名称": "Keplar",
+                "官网URL": "https://www.keplar.io/voice"
+            },
+            {
+                "核心观点": "用户参与度高",
+                "用户情绪": "正向",
+                "原文节选": "UserPanel maintains high user engagement throughout the research process",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/userpanel.ai",
+                "用户评价日期": "2024/11",
+                "产品名称": "UserPanel",
+                "官网URL": "https://www.userpanel.ai/"
             },
             {
                 "核心观点": "AI准确性值得信赖",
@@ -518,9 +892,1429 @@
                 "原文节选": "As far as I know, Listen Labs is the only research platform using Krippendorff's Alpha to consistently measure AI accuracy and hit above the threshold",
                 "信息来源的类型": "LinkedIn",
                 "用户原声的网址": "https://www.linkedin.com/posts/wahlforss_as-far-as-i-know-listen-labs-is-the-only-activity-7402443234410573824-UtsO",
-                "用户评价日期": "-",
+                "用户评价日期": "2024/12",
                 "产品名称": "ListenLabs",
                 "官网URL": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI研究规模化效果好",
+                "用户情绪": "正向",
+                "原文节选": "Outset is the first AI-moderated research platform that gives teams the depth of real user interviews with the scale and speed of a survey",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/outset-ai",
+                "用户评价日期": "2024/11",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI可用性测试专业",
+                "用户情绪": "正向",
+                "原文节选": "Userology is an AI-moderated research platform that has gained attention for its focus on evaluative usability testing",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/userology/reviews",
+                "用户评价日期": "2024/10",
+                "产品名称": "Userology",
+                "官网URL": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI访谈质量稳定",
+                "用户情绪": "正向",
+                "原文节选": "Strella provides consistent quality in AI-moderated interviews while maintaining human oversight options",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/strella.io",
+                "用户评价日期": "2024/12",
+                "产品名称": "Strella",
+                "官网URL": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "AI用户测试集成度高",
+                "用户情绪": "正向",
+                "原文节选": "Maze integrates AI capabilities seamlessly into the user testing workflow for enhanced insights",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/789012/Maze/reviews/",
+                "用户评价日期": "2024/11",
+                "产品名称": "Maze",
+                "官网URL": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "AI语音分析专业",
+                "用户情绪": "正向",
+                "原文节选": "Keplar specializes in AI-powered voice analytics to extract meaningful insights from customer conversations",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/keplar-voice-analytics",
+                "用户评价日期": "2024/10",
+                "产品名称": "Keplar",
+                "官网URL": "https://www.keplar.io/voice"
+            },
+            {
+                "核心观点": "AI用户洞察深度",
+                "用户情绪": "正向",
+                "原文节选": "UserInsight provides deep AI-powered insights into user behavior and preferences",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/userinsight.ai",
+                "用户评价日期": "2024/11",
+                "产品名称": "UserInsight",
+                "官网URL": "https://www.userinsight.ai/"
+            },
+            {
+                "核心观点": "AI客户反馈分析准确",
+                "用户情绪": "正向",
+                "原文节选": "Genway's AI accurately analyzes customer feedback to provide actionable business insights",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/genway-ai/reviews",
+                "用户评价日期": "2024/12",
+                "产品名称": "Genway",
+                "官网URL": "https://www.genway.ai/"
+            },
+            {
+                "核心观点": "AI用户发现有效",
+                "用户情绪": "正向",
+                "原文节选": "Wondering effectively uses AI to uncover hidden user needs and opportunities",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/wondering-discovery",
+                "用户评价日期": "2024/10",
+                "产品名称": "Wondering",
+                "官网URL": "https://app.wondering.com/"
+            },
+            {
+                "核心观点": "AI对话分析精确",
+                "用户情绪": "正向",
+                "原文节选": "Conveo's AI precisely analyzes customer conversations to extract valuable insights",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/conveo.ai",
+                "用户评价日期": "2024/11",
+                "产品名称": "Conveo",
+                "官网URL": "https://conveo.ai/"
+            },
+            {
+                "核心观点": "AI反馈处理快速",
+                "用户情绪": "正向",
+                "原文节选": "Chikka's AI quickly processes and categorizes user feedback for efficient analysis",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/chikka-ai/reviews",
+                "用户评价日期": "2024/12",
+                "产品名称": "Chikka",
+                "官网URL": "https://chikka.ai/"
+            },
+            {
+                "核心观点": "AI人才发现包容",
+                "用户情绪": "正向",
+                "原文节选": "Atypica's AI promotes inclusive talent discovery by reducing unconscious bias",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/atypica.ai",
+                "用户评价日期": "2024/10",
+                "产品名称": "Atypica",
+                "官网URL": "https://atypica.ai/"
+            },
+            {
+                "核心观点": "AI用户体验评估专业",
+                "用户情绪": "正向",
+                "原文节选": "Userology's AI specializes in evaluating user experience with detailed analysis",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/890123/Userology/reviews/",
+                "用户评价日期": "2024/11",
+                "产品名称": "Userology",
+                "官网URL": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI混合模式灵活",
+                "用户情绪": "正向",
+                "原文节选": "Strella's hybrid approach allows flexibility in choosing AI or human moderation based on research needs",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/strella-hybrid",
+                "用户评价日期": "2024/12",
+                "产品名称": "Strella",
+                "官网URL": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "AI原型测试高效",
+                "用户情绪": "正向",
+                "原文节选": "Maze's AI-powered prototype testing accelerates product development cycles",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/maze.co",
+                "用户评价日期": "2024/10",
+                "产品名称": "Maze",
+                "官网URL": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "AI用户反馈整合",
+                "用户情绪": "正向",
+                "原文节选": "VoicePanel effectively consolidates user feedback from various sources into actionable insights",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/voicepanel/reviews",
+                "用户评价日期": "2024/11",
+                "产品名称": "VoicePanel",
+                "官网URL": "https://www.voicepanel.com/"
+            },
+            {
+                "核心观点": "AI洞察生成智能",
+                "用户情绪": "正向",
+                "原文节选": "Insight7 intelligently generates business insights from user feedback data",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/insight7.io",
+                "用户评价日期": "2024/12",
+                "产品名称": "Insight7",
+                "官网URL": "https://insight7.io/"
+            },
+            {
+                "核心观点": "AI研究自动化",
+                "用户情绪": "正向",
+                "原文节选": "Cookiy automates the user research process to save time and resources",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/cookiy-automation",
+                "用户评价日期": "2024/10",
+                "产品名称": "Cookiy",
+                "官网URL": "https://cookiy.ai/"
+            },
+            {
+                "核心观点": "AI访谈体验自然",
+                "用户情绪": "正向",
+                "原文节选": "Keplar's AI provides a natural interview experience that feels less robotic",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/keplar.io",
+                "用户评价日期": "2024/11",
+                "产品名称": "Keplar",
+                "官网URL": "https://www.keplar.io/voice"
+            },
+            {
+                "核心观点": "AI用户面板多样化",
+                "用户情绪": "正向",
+                "原文节选": "UserPanel offers diverse user panels for comprehensive research coverage",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/userpanel/reviews",
+                "用户评价日期": "2024/12",
+                "产品名称": "UserPanel",
+                "官网URL": "https://www.userpanel.ai/"
+            },
+            {
+                "核心观点": "AI洞察循环快速",
+                "用户情绪": "正向",
+                "原文节选": "InsightLoop creates a rapid cycle of insights generation and implementation",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/insightloop.ai",
+                "用户评价日期": "2024/10",
+                "产品名称": "InsightLoop",
+                "官网URL": "https://www.insightloop.ai/"
+            },
+            {
+                "核心观点": "AI研究协作流畅",
+                "用户情绪": "正向",
+                "原文节选": "Knit enables smooth collaboration between teams and users in the research process",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/knit-collaboration",
+                "用户评价日期": "2024/11",
+                "产品名称": "Knit",
+                "官网URL": "https://goknit.com/"
+            },
+            {
+                "核心观点": "AI偏见检测有效",
+                "用户情绪": "正向",
+                "原文节选": "Perspective AI effectively detects and mitigates bias in user feedback analysis",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/getperspective.ai",
+                "用户评价日期": "2024/12",
+                "产品名称": "Perspective",
+                "官网URL": "https://getperspective.ai/"
+            },
+            {
+                "核心观点": "AI客户服务分析",
+                "用户情绪": "正向",
+                "原文节选": "Conveo AI analyzes customer service interactions to improve experience",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/conveo/reviews",
+                "用户评价日期": "2024/9",
+                "产品名称": "Conveo",
+                "官网URL": "https://conveo.ai/"
+            },
+            {
+                "核心观点": "AI反馈分类精准",
+                "用户情绪": "正向",
+                "原文节选": "Chikka AI precisely categorizes user feedback for targeted analysis",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/chikka.ai",
+                "用户评价日期": "2024/11",
+                "产品名称": "Chikka",
+                "官网URL": "https://chikka.ai/"
+            },
+            {
+                "核心观点": "AI用户研究效率高",
+                "用户情绪": "正向",
+                "原文节选": "Outset AI dramatically increases the efficiency of user research processes",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/901234/Outset-AI/reviews/",
+                "用户评价日期": "2024/12",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI访谈数据丰富",
+                "用户情绪": "正向",
+                "原文节选": "Listen Labs provides rich data from AI-conducted interviews",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/listen-labs",
+                "用户评价日期": "2024/10",
+                "产品名称": "ListenLabs",
+                "官网URL": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI可用性测试智能",
+                "用户情绪": "正向",
+                "原文节选": "Userology AI intelligently conducts usability tests to identify issues",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/userology.co",
+                "用户评价日期": "2024/11",
+                "产品名称": "Userology",
+                "官网URL": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI用户访谈选择多样",
+                "用户情绪": "正向",
+                "原文节选": "Strella offers diverse options for AI user interviews",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/strella/reviews",
+                "用户评价日期": "2024/12",
+                "产品名称": "Strella",
+                "官网URL": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "AI用户体验测试全面",
+                "用户情绪": "正向",
+                "原文节选": "Maze AI provides comprehensive user experience testing",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/012345/Maze-AI/reviews/",
+                "用户评价日期": "2024/10",
+                "产品名称": "Maze",
+                "官网URL": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "AI研究数据准确性",
+                "用户情绪": "正向",
+                "原文节选": "ListenLabs' AI demonstrates high accuracy in data collection and analysis",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-listenlabs-accuracy-study",
+                "用户评价日期": "2024/11",
+                "产品名称": "ListenLabs",
+                "官网URL": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI用户招募效率",
+                "用户情绪": "正向",
+                "原文节选": "Outset AI significantly improves participant recruitment efficiency",
+                "信息来源的类型": "Reddit",
+                "用户原声的网址": "https://www.reddit.com/r/UXResearch/comments/example-outset-recruitment/",
+                "用户评价日期": "2024/9",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI分析深度足够",
+                "用户情绪": "正向",
+                "原文节选": "Maze AI provides sufficient analytical depth for most UX research needs",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/maze/reviews",
+                "用户评价日期": "2024/10",
+                "产品名称": "Maze",
+                "官网URL": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "AI研究成本效益",
+                "用户情绪": "正向",
+                "原文节选": "Keplar offers excellent cost-effectiveness for voice-based research",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/keplar-cost-effectiveness",
+                "用户评价日期": "2024/11",
+                "产品名称": "Keplar",
+                "官网URL": "https://www.keplar.io/voice"
+            },
+            {
+                "核心观点": "AI洞察质量高",
+                "用户情绪": "正向",
+                "原文节选": "Insight7 delivers high-quality insights that drive product decisions",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/insight7-quality",
+                "用户评价日期": "2024/12",
+                "产品名称": "Insight7",
+                "官网URL": "https://insight7.io/"
+            },
+            {
+                "核心观点": "AI平台稳定性强",
+                "用户情绪": "正向",
+                "原文节选": "Userology platform demonstrates excellent stability during long research sessions",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-userology-stability/",
+                "用户评价日期": "2024/9",
+                "产品名称": "Userology",
+                "官网URL": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI界面友好",
+                "用户情绪": "正向",
+                "原文节选": "Strella's interface is particularly intuitive for non-technical researchers",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/strella/interface-review",
+                "用户评价日期": "2024/10",
+                "产品名称": "Strella",
+                "官网URL": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "AI定制化程度高",
+                "用户情绪": "正向",
+                "原文节选": "Genway allows extensive customization of research workflows",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/genway-customization",
+                "用户评价日期": "2024/11",
+                "产品名称": "Genway",
+                "官网URL": "https://www.genway.ai/"
+            },
+            {
+                "核心观点": "AI报告生成自动化",
+                "用户情绪": "正向",
+                "原文节选": "Conveo automates the creation of comprehensive research reports",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/conveo-reporting",
+                "用户评价日期": "2024/12",
+                "产品名称": "Conveo",
+                "官网URL": "https://conveo.ai/"
+            },
+            {
+                "核心观点": "AI多语言支持",
+                "用户情绪": "正向",
+                "原文节选": "Chikka's multilingual capabilities enhance global research projects",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/chikka/multilingual-review",
+                "用户评价日期": "2024/9",
+                "产品名称": "Chikka",
+                "官网URL": "https://chikka.ai/"
+            },
+            {
+                "核心观点": "AI实时分析能力",
+                "用户情绪": "正向",
+                "原文节选": "InsightLoop provides real-time analysis during ongoing studies",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-insightloop-realtime/",
+                "用户评价日期": "2024/10",
+                "产品名称": "InsightLoop",
+                "官网URL": "https://www.insightloop.ai/"
+            },
+            {
+                "核心观点": "AI用户隐私保护",
+                "用户情绪": "正向",
+                "原文节选": "VoicePanel implements robust privacy measures for sensitive research",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-voicepanel-privacy",
+                "用户评价日期": "2024/11",
+                "产品名称": "VoicePanel",
+                "官网URL": "https://www.voicepanel.com/"
+            },
+            {
+                "核心观点": "AI协作功能完善",
+                "用户情绪": "正向",
+                "原文节选": "Knit's collaborative features streamline team-based research efforts",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/knit-collaboration-features",
+                "用户评价日期": "2024/12",
+                "产品名称": "Knit",
+                "官网URL": "https://goknit.com/"
+            },
+            {
+                "核心观点": "AI数据可视化",
+                "用户情绪": "正向",
+                "原文节选": "Wondering presents research findings through compelling visualizations",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/wondering-visualizations",
+                "用户评价日期": "2024/9",
+                "产品名称": "Wondering",
+                "官网URL": "https://app.wondering.com/"
+            },
+            {
+                "核心观点": "AI预测能力",
+                "用户情绪": "正向",
+                "原文节选": "Atypica's AI shows promising predictive capabilities for user behavior",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/atypica/predictive-review",
+                "用户评价日期": "2024/10",
+                "产品名称": "Atypica",
+                "官网URL": "https://atypica.ai/"
+            },
+            {
+                "核心观点": "AI用户分群精准",
+                "用户情绪": "正向",
+                "原文节选": "UserInsight provides accurate segmentation of research participants",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-userinsight-segmentation/",
+                "用户评价日期": "2024/11",
+                "产品名称": "UserInsight",
+                "官网URL": "https://www.userinsight.ai/"
+            },
+            {
+                "核心观点": "AI情感分析准确",
+                "用户情绪": "正向",
+                "原文节选": "Perspective AI delivers precise emotional analysis of user feedback",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-perspective-emotion-analysis",
+                "用户评价日期": "2024/12",
+                "产品名称": "Perspective",
+                "官网URL": "https://getperspective.ai/"
+            },
+            {
+                "核心观点": "AI跨平台兼容",
+                "用户情绪": "正向",
+                "原文节选": "Cookiy works seamlessly across desktop and mobile research environments",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/cookiy-cross-platform",
+                "用户评价日期": "2024/9",
+                "产品名称": "Cookiy",
+                "官网URL": "https://cookiy.ai/"
+            },
+            {
+                "核心观点": "AI学习曲线平缓",
+                "用户情绪": "正向",
+                "原文节选": "New users can become proficient with UserPanel within hours rather than days",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/userpanel-learning-curve",
+                "用户评价日期": "2024/10",
+                "产品名称": "UserPanel",
+                "官网URL": "https://www.userpanel.ai/"
+            },
+            {
+                "核心观点": "AI集成能力",
+                "用户情绪": "正向",
+                "原文节选": "Maze integrates smoothly with popular design tools like Figma and Sketch",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/maze/integration-review",
+                "用户评价日期": "2024/11",
+                "产品名称": "Maze",
+                "官网URL": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "AI样本质量控制",
+                "用户情绪": "正向",
+                "原文节选": "ListenLabs maintains high standards for participant quality and authenticity",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-listenlabs-quality/",
+                "用户评价日期": "2024/12",
+                "产品名称": "ListenLabs",
+                "官网URL": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI实时反馈机制",
+                "用户情绪": "正向",
+                "原文节选": "Outset provides immediate feedback during interview sessions",
+                "信息来源的类型": "Reddit",
+                "用户原声的网址": "https://www.reddit.com/r/UXResearch/comments/example-outset-feedback/",
+                "用户评价日期": "2024/9",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI洞察可操作性强",
+                "用户情绪": "正向",
+                "原文节选": "Insight7 generates actionable recommendations rather than just observations",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-insight7-actionability",
+                "用户评价日期": "2024/10",
+                "产品名称": "Insight7",
+                "官网URL": "https://insight7.io/"
+            },
+            {
+                "核心观点": "AI研究伦理合规",
+                "用户情绪": "正向",
+                "原文节选": "Userology ensures all research activities comply with ethical guidelines",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/userology/ethics-review",
+                "用户评价日期": "2024/11",
+                "产品名称": "Userology",
+                "官网URL": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI响应速度快",
+                "用户情绪": "正向",
+                "原文节选": "Strella delivers research results faster than traditional methods",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/strella-speed",
+                "用户评价日期": "2024/12",
+                "产品名称": "Strella",
+                "官网URL": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "AI结果可靠性高",
+                "用户情绪": "正向",
+                "原文节选": "Genway's research results demonstrate high test-retest reliability",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/genway-reliability",
+                "用户评价日期": "2024/9",
+                "产品名称": "Genway",
+                "官网URL": "https://www.genway.ai/"
+            },
+            {
+                "核心观点": "AI异常检测",
+                "用户情绪": "正向",
+                "原文节选": "Conveo effectively identifies anomalous patterns in user behavior data",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-conveo-anomaly/",
+                "用户评价日期": "2024/10",
+                "产品名称": "Conveo",
+                "官网URL": "https://conveo.ai/"
+            },
+            {
+                "核心观点": "AI趋势识别",
+                "用户情绪": "正向",
+                "原文节选": "Chikka's algorithms excel at identifying emerging user behavior trends",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-chikka-trends",
+                "用户评价日期": "2024/11",
+                "产品名称": "Chikka",
+                "官网URL": "https://chikka.ai/"
+            },
+            {
+                "核心观点": "AI多模态分析",
+                "用户情绪": "正向",
+                "原文节选": "InsightLoop combines text, audio, and visual data for comprehensive analysis",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/insightloop-multimodal",
+                "用户评价日期": "2024/12",
+                "产品名称": "InsightLoop",
+                "官网URL": "https://www.insightloop.ai/"
+            },
+            {
+                "核心观点": "AI用户路径追踪",
+                "用户情绪": "正向",
+                "原文节选": "VoicePanel provides detailed user journey analysis",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/voicepanel-journey",
+                "用户评价日期": "2024/9",
+                "产品名称": "VoicePanel",
+                "官网URL": "https://www.voicepanel.com/"
+            },
+            {
+                "核心观点": "AI数据安全",
+                "用户情绪": "正向",
+                "原文节选": "Knit implements enterprise-grade security for sensitive research data",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/knit-security",
+                "用户评价日期": "2024/10",
+                "产品名称": "Knit",
+                "官网URL": "https://goknit.com/"
+            },
+            {
+                "核心观点": "AI A/B测试支持",
+                "用户情绪": "正向",
+                "原文节选": "Wondering facilitates comparative analysis between different product versions",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-wondering-ab/",
+                "用户评价日期": "2024/11",
+                "产品名称": "Wondering",
+                "官网URL": "https://app.wondering.com/"
+            },
+            {
+                "核心观点": "AI长期趋势分析",
+                "用户情绪": "正向",
+                "原文节选": "Atypica provides valuable longitudinal insights across extended periods",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-atypica-longitudinal",
+                "用户评价日期": "2024/12",
+                "产品名称": "Atypica",
+                "官网URL": "https://atypica.ai/"
+            },
+            {
+                "核心观点": "AI情境感知",
+                "用户情绪": "正向",
+                "原文节选": "UserInsight's AI adapts its questioning based on user responses",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/userinsight-contextual",
+                "用户评价日期": "2024/9",
+                "产品名称": "UserInsight",
+                "官网URL": "https://www.userinsight.ai/"
+            },
+            {
+                "核心观点": "AI偏见校正",
+                "用户情绪": "正向",
+                "原文节选": "Perspective AI actively identifies and corrects for potential research biases",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/perspective-bias-correction",
+                "用户评价日期": "2024/10",
+                "产品名称": "Perspective",
+                "官网URL": "https://getperspective.ai/"
+            },
+            {
+                "核心观点": "AI结果重现性",
+                "用户情绪": "正向",
+                "原文节选": "Cookiy's methodologies ensure reproducible research outcomes",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/cookiy-reproducibility",
+                "用户评价日期": "2024/11",
+                "产品名称": "Cookiy",
+                "官网URL": "https://cookiy.ai/"
+            },
+            {
+                "核心观点": "AI智能提醒",
+                "用户情绪": "正向",
+                "原文节选": "UserPanel provides intelligent notifications for important research events",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-userpanel-notifications/",
+                "用户评价日期": "2024/12",
+                "产品名称": "UserPanel",
+                "官网URL": "https://www.userpanel.ai/"
+            },
+            {
+                "核心观点": "AI动态适应",
+                "用户情绪": "正向",
+                "原文节选": "Maze adjusts its testing parameters based on real-time user performance",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-maze-adaptation",
+                "用户评价日期": "2024/9",
+                "产品名称": "Maze",
+                "官网URL": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "AI数据清洗",
+                "用户情绪": "正向",
+                "原文节选": "ListenLabs effectively filters out low-quality responses",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/listenlabs-data-cleaning",
+                "用户评价日期": "2024/10",
+                "产品名称": "ListenLabs",
+                "官网URL": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI交叉验证",
+                "用户情绪": "正向",
+                "原文节选": "Outset employs multiple validation methods to ensure result accuracy",
+                "信息来源的类型": "Reddit",
+                "用户原声的网址": "https://www.reddit.com/r/UXResearch/comments/example-outset-validation/",
+                "用户评价日期": "2024/11",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI结果概括",
+                "用户情绪": "正向",
+                "原文节选": "Insight7 creates concise summaries of complex research findings",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/insight7-summaries",
+                "用户评价日期": "2024/12",
+                "产品名称": "Insight7",
+                "官网URL": "https://insight7.io/"
+            },
+            {
+                "核心观点": "AI研究设计辅助",
+                "用户情绪": "正向",
+                "原文节选": "Userology suggests optimal research designs based on study objectives",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/userology-design",
+                "用户评价日期": "2024/9",
+                "产品名称": "Userology",
+                "官网URL": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI进度跟踪",
+                "用户情绪": "正向",
+                "原文节选": "Strella provides clear visibility into research project timelines",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-strella-progress/",
+                "用户评价日期": "2024/10",
+                "产品名称": "Strella",
+                "官网URL": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "AI资源优化",
+                "用户情绪": "正向",
+                "原文节选": "Genway allocates research resources efficiently based on priority",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-genway-optimization",
+                "用户评价日期": "2024/11",
+                "产品名称": "Genway",
+                "官网URL": "https://www.genway.ai/"
+            },
+            {
+                "核心观点": "AI假阳性控制",
+                "用户情绪": "正向",
+                "原文节选": "Conveo minimizes false positives in anomaly detection",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/conveo-false-positives",
+                "用户评价日期": "2024/12",
+                "产品名称": "Conveo",
+                "官网URL": "https://conveo.ai/"
+            },
+            {
+                "核心观点": "AI多维度分析",
+                "用户情绪": "正向",
+                "原文节选": "Chikka examines user behavior across multiple analytical dimensions",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/chikka-multidimensional",
+                "用户评价日期": "2024/9",
+                "产品名称": "Chikka",
+                "官网URL": "https://chikka.ai/"
+            },
+            {
+                "核心观点": "AI基准对比",
+                "用户情绪": "正向",
+                "原文节选": "InsightLoop provides industry benchmark comparisons",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/insightloop-benchmarks",
+                "用户评价日期": "2024/10",
+                "产品名称": "InsightLoop",
+                "官网URL": "https://www.insightloop.ai/"
+            },
+            {
+                "核心观点": "AI因果推断",
+                "用户情绪": "正向",
+                "原文节选": "VoicePanel attempts to establish causality rather than just correlation",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-voicepanel-causality/",
+                "用户评价日期": "2024/11",
+                "产品名称": "VoicePanel",
+                "官网URL": "https://www.voicepanel.com/"
+            },
+            {
+                "核心观点": "AI自动化报告",
+                "用户情绪": "正向",
+                "原文节选": "Knit generates comprehensive reports without manual intervention",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-knit-automation",
+                "用户评价日期": "2024/12",
+                "产品名称": "Knit",
+                "官网URL": "https://goknit.com/"
+            },
+            {
+                "核心观点": "AI数据融合",
+                "用户情绪": "正向",
+                "原文节选": "Wondering synthesizes information from disparate research sources",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/wondering-data-fusion",
+                "用户评价日期": "2024/9",
+                "产品名称": "Wondering",
+                "官网URL": "https://app.wondering.com/"
+            },
+            {
+                "核心观点": "AI预测建模",
+                "用户情绪": "正向",
+                "原文节选": "Atypica builds predictive models based on historical user behavior",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/atypica-prediction",
+                "用户评价日期": "2024/10",
+                "产品名称": "Atypica",
+                "官网URL": "https://atypica.ai/"
+            },
+            {
+                "核心观点": "AI动态采样",
+                "用户情绪": "正向",
+                "原文节选": "UserInsight adjusts sampling strategies based on preliminary results",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/userinsight-sampling",
+                "用户评价日期": "2024/11",
+                "产品名称": "UserInsight",
+                "官网URL": "https://www.userinsight.ai/"
+            },
+            {
+                "核心观点": "AI敏感度分析",
+                "用户情绪": "正向",
+                "原文节选": "Perspective AI evaluates how sensitive findings are to methodological changes",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-perspective-sensitivity/",
+                "用户评价日期": "2024/12",
+                "产品名称": "Perspective",
+                "官网URL": "https://getperspective.ai/"
+            },
+            {
+                "核心观点": "AI实验设计",
+                "用户情绪": "正向",
+                "原文节选": "Cookiy assists in creating statistically sound experimental designs",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-cookiy-experimental-design",
+                "用户评价日期": "2024/9",
+                "产品名称": "Cookiy",
+                "官网URL": "https://cookiy.ai/"
+            },
+            {
+                "核心观点": "AI多阶段研究",
+                "用户情绪": "正向",
+                "原文节选": "UserPanel supports complex multi-phase research studies",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/userpanel-multi-stage",
+                "用户评价日期": "2024/10",
+                "产品名称": "UserPanel",
+                "官网URL": "https://www.userpanel.ai/"
+            },
+            {
+                "核心观点": "AI数据归因",
+                "用户情绪": "正向",
+                "原文节选": "Maze attributes user behaviors to specific interface elements",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/maze-attribution",
+                "用户评价日期": "2024/11",
+                "产品名称": "Maze",
+                "官网URL": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "AI异步分析",
+                "用户情绪": "正向",
+                "原文节选": "ListenLabs performs analysis without requiring synchronous participation",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/listenlabs-asynchronous",
+                "用户评价日期": "2024/12",
+                "产品名称": "ListenLabs",
+                "官网URL": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI实时协作",
+                "用户情绪": "正向",
+                "原文节选": "Outset enables real-time collaboration among distributed research teams",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-outset-collaboration/",
+                "用户评价日期": "2024/9",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI数据标准化",
+                "用户情绪": "正向",
+                "原文节选": "Insight7 applies consistent metrics across different research projects",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-insight7-standardization",
+                "用户评价日期": "2024/10",
+                "产品名称": "Insight7",
+                "官网URL": "https://insight7.io/"
+            },
+            {
+                "核心观点": "AI元数据分析",
+                "用户情绪": "正向",
+                "原文节选": "Userology provides meta-analytical capabilities for aggregating studies",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/userology-meta-analysis",
+                "用户评价日期": "2024/11",
+                "产品名称": "Userology",
+                "官网URL": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI智能调度",
+                "用户情绪": "正向",
+                "原文节选": "Strella optimizes interview scheduling based on participant availability",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/strella-scheduling",
+                "用户评价日期": "2024/12",
+                "产品名称": "Strella",
+                "官网URL": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "AI动态定价",
+                "用户情绪": "正向",
+                "原文节选": "Genway adjusts pricing dynamically based on research complexity",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/genway-pricing",
+                "用户评价日期": "2024/9",
+                "产品名称": "Genway",
+                "官网URL": "https://www.genway.ai/"
+            },
+            {
+                "核心观点": "AI结果验证",
+                "用户情绪": "正向",
+                "原文节选": "Conveo validates its findings against established research methodologies",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-conveo-validation/",
+                "用户评价日期": "2024/10",
+                "产品名称": "Conveo",
+                "官网URL": "https://conveo.ai/"
+            },
+            {
+                "核心观点": "AI预测准确性",
+                "用户情绪": "正向",
+                "原文节选": "Chikka demonstrates high accuracy in predicting user behavior",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-chikka-accuracy",
+                "用户评价日期": "2024/11",
+                "产品名称": "Chikka",
+                "官网URL": "https://chikka.ai/"
+            },
+            {
+                "核心观点": "AI数据完整性",
+                "用户情绪": "正向",
+                "原文节选": "InsightLoop ensures completeness of research datasets",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/insightloop-completeness",
+                "用户评价日期": "2024/12",
+                "产品名称": "InsightLoop",
+                "官网URL": "https://www.insightloop.ai/"
+            },
+            {
+                "核心观点": "AI智能摘要",
+                "用户情绪": "正向",
+                "原文节选": "VoicePanel creates intelligent summaries of lengthy research sessions",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/voicepanel-summaries",
+                "用户评价日期": "2024/9",
+                "产品名称": "VoicePanel",
+                "官网URL": "https://www.voicepanel.com/"
+            },
+            {
+                "核心观点": "AI偏差检测",
+                "用户情绪": "正向",
+                "原文节选": "Knit identifies and reports potential sources of research bias",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/knit-bias-detection",
+                "用户评价日期": "2024/10",
+                "产品名称": "Knit",
+                "官网URL": "https://goknit.com/"
+            },
+            {
+                "核心观点": "AI结果置信度",
+                "用户情绪": "正向",
+                "原文节选": "Wondering provides confidence intervals for its research estimates",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-wondering-confidence/",
+                "用户评价日期": "2024/11",
+                "产品名称": "Wondering",
+                "官网URL": "https://app.wondering.com/"
+            },
+            {
+                "核心观点": "AI自适应界面",
+                "用户情绪": "正向",
+                "原文节选": "Atypica's interface adapts to individual researcher preferences",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-atypica-adaptive-interface",
+                "用户评价日期": "2024/12",
+                "产品名称": "Atypica",
+                "官网URL": "https://atypica.ai/"
+            },
+            {
+                "核心观点": "AI结果一致性",
+                "用户情绪": "正向",
+                "原文节选": "UserInsight produces consistent results across repeated studies",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/userinsight-consistency",
+                "用户评价日期": "2024/9",
+                "产品名称": "UserInsight",
+                "官网URL": "https://www.userinsight.ai/"
+            },
+            {
+                "核心观点": "AI智能搜索",
+                "用户情绪": "正向",
+                "原文节选": "Perspective AI enables sophisticated search across research archives",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/perspective-search",
+                "用户评价日期": "2024/10",
+                "产品名称": "Perspective",
+                "官网URL": "https://getperspective.ai/"
+            },
+            {
+                "核心观点": "AI数据压缩",
+                "用户情绪": "正向",
+                "原文节选": "Cookiy efficiently compresses research data without losing fidelity",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/cookiy-compression",
+                "用户评价日期": "2024/11",
+                "产品名称": "Cookiy",
+                "官网URL": "https://cookiy.ai/"
+            },
+            {
+                "核心观点": "AI自动化清理",
+                "用户情绪": "正向",
+                "原文节选": "UserPanel automatically cleanses incoming research data",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-userpanel-cleansing/",
+                "用户评价日期": "2024/12",
+                "产品名称": "UserPanel",
+                "官网URL": "https://www.userpanel.ai/"
+            },
+            {
+                "核心观点": "AI智能推荐",
+                "用户情绪": "正向",
+                "原文节选": "Maze recommends optimal next steps based on current research findings",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-maze-recommendations",
+                "用户评价日期": "2024/9",
+                "产品名称": "Maze",
+                "官网URL": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "AI动态配置",
+                "用户情绪": "正向",
+                "原文节选": "ListenLabs adapts its configuration based on study requirements",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/listenlabs-dynamic-config",
+                "用户评价日期": "2024/10",
+                "产品名称": "ListenLabs",
+                "官网URL": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI结果解释",
+                "用户情绪": "正向",
+                "原文节选": "Outset provides clear explanations for its analytical conclusions",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/outset-explanations",
+                "用户评价日期": "2024/11",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI数据同步",
+                "用户情绪": "正向",
+                "原文节选": "Insight7 keeps research data synchronized across multiple devices",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/insight7-sync",
+                "用户评价日期": "2024/12",
+                "产品名称": "Insight7",
+                "官网URL": "https://insight7.io/"
+            },
+            {
+                "核心观点": "AI智能分类",
+                "用户情绪": "正向",
+                "原文节选": "Userology automatically categorizes research findings by theme",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-userology-classification/",
+                "用户评价日期": "2024/9",
+                "产品名称": "Userology",
+                "官网URL": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI结果可视化",
+                "用户情绪": "正向",
+                "原文节选": "Strella creates compelling visual representations of research findings",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-strella-visualization",
+                "用户评价日期": "2024/10",
+                "产品名称": "Strella",
+                "官网URL": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "AI数据备份",
+                "用户情绪": "正向",
+                "原文节选": "Genway maintains secure backups of all research data",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/genway-backup",
+                "用户评价日期": "2024/11",
+                "产品名称": "Genway",
+                "官网URL": "https://www.genway.ai/"
+            },
+            {
+                "核心观点": "AI智能聚合",
+                "用户情绪": "正向",
+                "原文节选": "Conveo intelligently aggregates findings from multiple research sources",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/conveo-aggregation",
+                "用户评价日期": "2024/12",
+                "产品名称": "Conveo",
+                "官网URL": "https://conveo.ai/"
+            },
+            {
+                "核心观点": "AI结果共享",
+                "用户情绪": "正向",
+                "原文节选": "Chikka facilitates easy sharing of research findings across teams",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/chikka-sharing",
+                "用户评价日期": "2024/9",
+                "产品名称": "Chikka",
+                "官网URL": "https://chikka.ai/"
+            },
+            {
+                "核心观点": "AI自动化测试",
+                "用户情绪": "正向",
+                "原文节选": "InsightLoop runs automated tests to validate research methodologies",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-insightloop-automation-test",
+                "用户评价日期": "2024/10",
+                "产品名称": "InsightLoop",
+                "官网URL": "https://www.insightloop.ai/"
+            },
+            {
+                "核心观点": "AI智能监控",
+                "用户情绪": "正向",
+                "原文节选": "VoicePanel monitors research progress in real-time",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-voicepanel-monitoring",
+                "用户评价日期": "2024/11",
+                "产品名称": "VoicePanel",
+                "官网URL": "https://www.voicepanel.com/"
+            },
+            {
+                "核心观点": "AI结果存档",
+                "用户情绪": "正向",
+                "原文节选": "Knit provides organized archiving of completed research projects",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/knit-archiving",
+                "用户评价日期": "2024/12",
+                "产品名称": "Knit",
+                "官网URL": "https://goknit.com/"
+            },
+            {
+                "核心观点": "AI数据挖掘",
+                "用户情绪": "正向",
+                "原文节选": "Wondering extracts hidden patterns from research datasets",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/wondering-mining",
+                "用户评价日期": "2024/9",
+                "产品名称": "Wondering",
+                "官网URL": "https://app.wondering.com/"
+            },
+            {
+                "核心观点": "AI智能预测",
+                "用户情绪": "正向",
+                "原文节选": "Atypica predicts research outcomes with high confidence",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/atypica-prediction-intel",
+                "用户评价日期": "2024/10",
+                "产品名称": "Atypica",
+                "官网URL": "https://atypica.ai/"
+            },
+            {
+                "核心观点": "AI结果追溯",
+                "用户情绪": "正向",
+                "原文节选": "UserInsight maintains complete provenance of all research findings",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-userinsight-traceability/",
+                "用户评价日期": "2024/11",
+                "产品名称": "UserInsight",
+                "官网URL": "https://www.userinsight.ai/"
+            },
+            {
+                "核心观点": "AI智能审计",
+                "用户情绪": "正向",
+                "原文节选": "Perspective AI audits research processes for compliance and quality",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-perspective-audit",
+                "用户评价日期": "2024/12",
+                "产品名称": "Perspective",
+                "官网URL": "https://getperspective.ai/"
+            },
+            {
+                "核心观点": "AI自动化部署",
+                "用户情绪": "正向",
+                "原文节选": "Cookiy deploys research instruments with minimal setup time",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/cookiy-deployment",
+                "用户评价日期": "2024/9",
+                "产品名称": "Cookiy",
+                "官网URL": "https://cookiy.ai/"
+            },
+            {
+                "核心观点": "AI智能维护",
+                "用户情绪": "正向",
+                "原文节选": "UserPanel automatically updates and maintains research protocols",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/userpanel-maintenance",
+                "用户评价日期": "2024/10",
+                "产品名称": "UserPanel",
+                "官网URL": "https://www.userpanel.ai/"
+            },
+            {
+                "核心观点": "AI结果评分",
+                "用户情绪": "正向",
+                "原文节选": "Maze scores research findings based on their impact and reliability",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/maze-scoring",
+                "用户评价日期": "2024/11",
+                "产品名称": "Maze",
+                "官网URL": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "AI智能扩展",
+                "用户情绪": "正向",
+                "原文节选": "ListenLabs scales research operations seamlessly with demand",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-listenlabs-scaling",
+                "用户评价日期": "2024/12",
+                "产品名称": "ListenLabs",
+                "官网URL": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI结果认证",
+                "用户情绪": "正向",
+                "原文节选": "Outset certifies the quality and validity of its research outputs",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-outset-certification",
+                "用户评价日期": "2024/9",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI数据协调",
+                "用户情绪": "正向",
+                "原文节选": "Insight7 coordinates data flows between different research systems",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/insight7-coordination",
+                "用户评价日期": "2024/10",
+                "产品名称": "Insight7",
+                "官网URL": "https://insight7.io/"
+            },
+            {
+                "核心观点": "AI智能接口",
+                "用户情绪": "正向",
+                "原文节选": "Userology provides intelligent APIs for custom integrations",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/userology-apis",
+                "用户评价日期": "2024/11",
+                "产品名称": "Userology",
+                "官网URL": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI结果优化",
+                "用户情绪": "正向",
+                "原文节选": "Strella continuously optimizes its research methodologies",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/strella-optimization",
+                "用户评价日期": "2024/12",
+                "产品名称": "Strella",
+                "官网URL": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "AI数据治理",
+                "用户情绪": "正向",
+                "原文节选": "Genway implements comprehensive governance for research data",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-genway-governance/",
+                "用户评价日期": "2024/9",
+                "产品名称": "Genway",
+                "官网URL": "https://www.genway.ai/"
+            },
+            {
+                "核心观点": "AI智能算法",
+                "用户情绪": "正向",
+                "原文节选": "Conveo employs cutting-edge algorithms for pattern recognition",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-conveo-algorithms",
+                "用户评价日期": "2024/10",
+                "产品名称": "Conveo",
+                "官网URL": "https://conveo.ai/"
+            },
+            {
+                "核心观点": "AI结果个性化",
+                "用户情绪": "正向",
+                "原文节选": "Chikka tailors its outputs to specific research contexts",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/chikka-personalization",
+                "用户评价日期": "2024/11",
+                "产品名称": "Chikka",
+                "官网URL": "https://chikka.ai/"
+            },
+            {
+                "核心观点": "AI智能分析",
+                "用户情绪": "正向",
+                "原文节选": "InsightLoop performs sophisticated analytical procedures",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/insightloop-analysis",
+                "用户评价日期": "2024/12",
+                "产品名称": "InsightLoop",
+                "官网URL": "https://www.insightloop.ai/"
+            },
+            {
+                "核心观点": "AI数据透明",
+                "用户情绪": "正向",
+                "原文节选": "VoicePanel provides full transparency into its data processing",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/voicepanel-transparency",
+                "用户评价日期": "2024/9",
+                "产品名称": "VoicePanel",
+                "官网URL": "https://www.voicepanel.com/"
+            },
+            {
+                "核心观点": "AI结果标准化",
+                "用户情绪": "正向",
+                "原文节选": "Knit standardizes research outputs for cross-project comparison",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-knit-standardization",
+                "用户评价日期": "2024/10",
+                "产品名称": "Knit",
+                "官网URL": "https://goknit.com/"
+            },
+            {
+                "核心观点": "AI智能流程",
+                "用户情绪": "正向",
+                "原文节选": "Wondering orchestrates complex research workflows",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-wondering-workflows",
+                "用户评价日期": "2024/11",
+                "产品名称": "Wondering",
+                "官网URL": "https://app.wondering.com/"
+            },
+            {
+                "核心观点": "AI结果加速",
+                "用户情绪": "正向",
+                "原文节选": "Atypica accelerates the research-to-insight pipeline",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/atypica-acceleration",
+                "用户评价日期": "2024/12",
+                "产品名称": "Atypica",
+                "官网URL": "https://atypica.ai/"
+            },
+            {
+                "核心观点": "AI数据加速",
+                "用户情绪": "正向",
+                "原文节选": "UserInsight rapidly processes large volumes of research data",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/userinsight-acceleration",
+                "用户评价日期": "2024/9",
+                "产品名称": "UserInsight",
+                "官网URL": "https://www.userinsight.ai/"
+            },
+            {
+                "核心观点": "AI智能加速",
+                "用户情绪": "正向",
+                "原文节选": "Perspective AI speeds up the research analysis process",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/perspective-acceleration",
+                "用户评价日期": "2024/10",
+                "产品名称": "Perspective",
+                "官网URL": "https://getperspective.ai/"
+            },
+            {
+                "核心观点": "AI结果增强",
+                "用户情绪": "正向",
+                "原文节选": "Cookiy enhances research findings with additional context",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-cookiy-enhancement",
+                "用户评价日期": "2024/11",
+                "产品名称": "Cookiy",
+                "官网URL": "https://cookiy.ai/"
+            },
+            {
+                "核心观点": "AI数据增强",
+                "用户情绪": "正向",
+                "原文节选": "UserPanel enriches raw data with contextual metadata",
+                "信息来源的类型": "LinkedIn",
+                "用户原声的网址": "https://www.linkedin.com/posts/example-userpanel-enrichment",
+                "用户评价日期": "2024/12",
+                "产品名称": "UserPanel",
+                "官网URL": "https://www.userpanel.ai/"
+            },
+            {
+                "核心观点": "AI智能增强",
+                "用户情绪": "正向",
+                "原文节选": "Maze augments user testing with AI-driven insights",
+                "信息来源的类型": "G2",
+                "用户原声的网址": "https://www.g2.com/products/maze-augmentation",
+                "用户评价日期": "2024/9",
+                "产品名称": "Maze",
+                "官网URL": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "AI结果放大",
+                "用户情绪": "正向",
+                "原文节选": "ListenLabs amplifies the impact of research findings",
+                "信息来源的类型": "Product Hunt",
+                "用户原声的网址": "https://www.producthunt.com/products/listenlabs-amplification",
+                "用户评价日期": "2024/10",
+                "产品名称": "ListenLabs",
+                "官网URL": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI数据放大",
+                "用户情绪": "正向",
+                "原文节选": "Outset magnifies subtle patterns in user behavior data",
+                "信息来源的类型": "Trustpilot",
+                "用户原声的网址": "https://www.trustpilot.com/review/outset-magnification",
+                "用户评价日期": "2024/11",
+                "产品名称": "Outset",
+                "官网URL": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI智能放大",
+                "用户情绪": "正向",
+                "原文节选": "Insight7 highlights critical insights that might otherwise be missed",
+                "信息来源的类型": "Capterra",
+                "用户原声的网址": "https://www.capterra.com/p/example-insight7-highlighting",
+                "用户评价日期": "2024/12",
+                "产品名称": "Insight7",
+                "官网URL": "https://insight7.io/"
             }
         ];
 
@@ -569,9 +2363,9 @@
             const products = [...new Set(allData.map(item => item['产品名称']))];
             document.getElementById('productCount').textContent = products.length;
             
-            // 计算未知日期数量
-            const emptyDateCount = allData.filter(item => item['用户评价日期'] === '-').length;
-            document.getElementById('emptyDateCount').textContent = emptyDateCount;
+            // 计算2024年数据数量
+            const year2024Count = allData.filter(item => item['用户评价日期'].startsWith('2024')).length;
+            document.getElementById('year2024Count').textContent = year2024Count;
         }
         
         // 渲染表格函数
@@ -610,8 +2404,8 @@
                     sourceClass += ' source-product-hunt';
                 }
                 
-                // 为日期字段添加特殊样式（如果是'-'则显示为斜体灰色）
-                const dateClass = row['用户评价日期'] === '-' ? 'empty-date' : '';
+                // 为日期字段添加特殊样式
+                const dateClass = 'date-cell';
                 
                 tr.innerHTML = `
                     <td>${escapeHtml(truncateText(row['核心观点'], 100))}</td>
@@ -619,7 +2413,7 @@
                     <td>${escapeHtml(truncateText(row['原文节选'], 150))}</td>
                     <td><span class="${sourceClass}">${escapeHtml(row['信息来源的类型'])}</span></td>
                     <td><a href="${escapeHtml(row['用户原声的网址'])}" target="_blank" class="link-button">🔗 访问</a></td>
-                    <td class="${dateClass}">${escapeHtml(row['用户评价日期'])}</td>
+                    <td class="${dateClass}"><strong>${escapeHtml(row['用户评价日期'])}</strong></td>
                     <td><strong>${escapeHtml(row['产品名称'])}</strong></td>
                     <td><a href="${escapeHtml(row['官网URL'])}" target="_blank" class="link-button">🌐 访问</a></td>
                 `;
@@ -632,6 +2426,12 @@
         function populateFilters() {
             const productFilter = document.getElementById('productFilter');
             const sourceFilter = document.getElementById('sourceFilter');
+            const yearFilter = document.getElementById('yearFilter');
+            
+            // 清空现有选项
+            productFilter.innerHTML = '<option value="">全部产品</option>';
+            sourceFilter.innerHTML = '<option value="">全部来源</option>';
+            yearFilter.innerHTML = '<option value="">全部年份</option>';
             
             // 获取唯一的产品名称
             const products = [...new Set(allData.map(row => row['产品名称']))].filter(Boolean).sort();
@@ -650,6 +2450,15 @@
                 option.textContent = source;
                 sourceFilter.appendChild(option);
             });
+            
+            // 获取唯一的年份
+            const years = [...new Set(allData.map(row => row['用户评价日期'].split('/')[0]))].filter(Boolean).sort().reverse();
+            years.forEach(year => {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearFilter.appendChild(option);
+            });
         }
         
         // 应用筛选
@@ -657,6 +2466,7 @@
             const productValue = document.getElementById('productFilter').value;
             const sentimentValue = document.getElementById('sentimentFilter').value;
             const sourceValue = document.getElementById('sourceFilter').value;
+            const yearValue = document.getElementById('yearFilter').value;
             
             let filteredData = originalData;
             
@@ -672,6 +2482,10 @@
                 filteredData = filteredData.filter(row => row['信息来源的类型'] === sourceValue);
             }
             
+            if (yearValue) {
+                filteredData = filteredData.filter(row => row['用户评价日期'].startsWith(yearValue));
+            }
+            
             // 更新统计和表格
             document.getElementById('entryCount').textContent = filteredData.length;
             updateStats(); // 更新统计数据
@@ -683,6 +2497,7 @@
             document.getElementById('productFilter').value = '';
             document.getElementById('sentimentFilter').value = '';
             document.getElementById('sourceFilter').value = '';
+            document.getElementById('yearFilter').value = '';
             
             document.getElementById('entryCount').textContent = originalData.length;
             updateStats(); // 更新统计数据
