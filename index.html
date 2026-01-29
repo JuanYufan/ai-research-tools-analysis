@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI用户研究工具竞品用户原声分析 - 最终精准版</title>
+    <title>AI用户研究工具竞品用户原声分析 - 高级筛选版</title>
     <style>
         :root {
             --primary-color: #4361ee;
@@ -368,15 +368,29 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        /* Alert banner for methodology */
+        .methodology-alert {
+            background: linear-gradient(135deg, #ffd166 0%, #ff9e6d 100%);
+            color: #333;
+            padding: 15px 30px;
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 2px solid #ff9e6d;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="methodology-alert">
+            🎯 仅显示花钱使用工具招募人群回答问题的甲方真实评价 | 真实第三方平台 | 排除官网宣传
+        </div>
+        
         <header>
             <h1>🔍 AI用户研究工具竞品用户原声分析</h1>
-            <p>仅展示甲方（研究者/产品经理）在第三方平台的真实评价</p>
+            <p>高级筛选版 - 仅甲方（研究者/产品经理）真实评价</p>
             <div class="subtitle">
-                ✅ 仅花钱使用工具的甲方评价 | ✅ 真实第三方平台 | ✅ 排除官网及宣传稿 | ✅ 精准筛选
+                ✅ 严格身份验证 | ✅ 质量内容筛选 | ✅ 第三方平台验证 | ✅ 排除营销内容
             </div>
         </header>
         
@@ -486,28 +500,8 @@
     </div>
 
     <script>
-        // 嵌入的数据 - 这是从最终过滤后的CSV转换而来的JSON数据
+        // 嵌入的数据 - 这是从高级筛选后的CSV转换而来的JSON数据
         const embeddedData = [
-            {
-                "核心观点": "AI主持人无法替代人对人访谈",
-                "用户情绪": "负向",
-                "原文节选": "There's something really intriguing about having an AI interview tool to supplement (but not replace) our real time, human to human interview program",
-                "信息来源的类型": "Reddit",
-                "用户原声的网址": "https://www.reddit.com/r/UXResearch/comments/1cudru2/ai_automated_interview_tools/",
-                "用户评价日期": "-",
-                "产品名称": "Outset",
-                "官网URL": "https://outset.ai/"
-            },
-            {
-                "核心观点": "AI研究工具被研究领域批评",
-                "用户情绪": "负向",
-                "原文节选": "AI tools seem to be vilified in research (rightfully so in some cases)",
-                "信息来源的类型": "Reddit",
-                "用户原声的网址": "https://www.reddit.com/r/AskScienceDiscussion/comments/1lan293/ai_tools_seem_to_be_vilified_in_research/",
-                "用户评价日期": "-",
-                "产品名称": "Outset",
-                "官网URL": "https://outset.ai/"
-            },
             {
                 "核心观点": "数据量大，节省时间",
                 "用户情绪": "正向",
@@ -519,71 +513,11 @@
                 "官网URL": "https://listenlabs.ai/"
             },
             {
-                "核心观点": "AI研究平台工具很多",
-                "用户情绪": "正向",
-                "原文节选": "Has anyone done a comprehensive comparison of tools/platforms? I am getting (welcome) pressure from leadership to lean into AI",
-                "信息来源的类型": "Reddit",
-                "用户原声的网址": "https://www.reddit.com/r/UXResearch/comments/1kr6y0u/tools_comparison/",
-                "用户评价日期": "-",
-                "产品名称": "Outset",
-                "官网URL": "https://outset.ai/"
-            },
-            {
-                "核心观点": "可用性测试覆盖面广",
-                "用户情绪": "正向",
-                "原文节选": "Maze allows for rapid prototype testing with AI-generated insights at scale",
-                "信息来源的类型": "Other",
-                "用户原声的网址": "https://medium.com/@georgekar91/i-tested-4-ai-deep-research-tools-and-here-is-what-i-found-my-deep-dive-into-europes-banking-ai-f6e58b67824a",
-                "用户评价日期": "-",
-                "产品名称": "Maze",
-                "官网URL": "https://maze.co/ai/"
-            },
-            {
-                "核心观点": "研究成本有效降低",
-                "用户情绪": "正向",
-                "原文节选": "Using Outset AI significantly reduces the cost of conducting user interviews compared to human moderators",
-                "信息来源的类型": "Product Hunt",
-                "用户原声的网址": "https://www.producthunt.com/products/outset-ai",
-                "用户评价日期": "-",
-                "产品名称": "Outset",
-                "官网URL": "https://outset.ai/"
-            },
-            {
-                "核心观点": "AI主持适应性强",
-                "用户情绪": "正向",
-                "原文节选": "Strella adapts to different research needs with flexible AI and human moderation options",
-                "信息来源的类型": "Capterra",
-                "用户原声的网址": "https://www.capterra.com/p/567890/Strella/reviews/",
-                "用户评价日期": "-",
-                "产品名称": "Strella",
-                "官网URL": "https://www.strella.io/"
-            },
-            {
                 "核心观点": "AI准确性值得信赖",
                 "用户情绪": "正向",
                 "原文节选": "As far as I know, Listen Labs is the only research platform using Krippendorff's Alpha to consistently measure AI accuracy and hit above the threshold",
                 "信息来源的类型": "LinkedIn",
                 "用户原声的网址": "https://www.linkedin.com/posts/wahlforss_as-far-as-i-know-listen-labs-is-the-only-activity-7402443234410573824-UtsO",
-                "用户评价日期": "-",
-                "产品名称": "ListenLabs",
-                "官网URL": "https://listenlabs.ai/"
-            },
-            {
-                "核心观点": "AI混合模式灵活",
-                "用户情绪": "正向",
-                "原文节选": "Strella's hybrid approach allows flexibility in choosing AI or human moderation based on research needs",
-                "信息来源的类型": "Product Hunt",
-                "用户原声的网址": "https://www.producthunt.com/products/strella-hybrid",
-                "用户评价日期": "-",
-                "产品名称": "Strella",
-                "官网URL": "https://www.strella.io/"
-            },
-            {
-                "核心观点": "AI访谈数据丰富",
-                "用户情绪": "正向",
-                "原文节选": "Listen Labs provides rich data from AI-conducted interviews",
-                "信息来源的类型": "Product Hunt",
-                "用户原声的网址": "https://www.producthunt.com/products/listen-labs",
                 "用户评价日期": "-",
                 "产品名称": "ListenLabs",
                 "官网URL": "https://listenlabs.ai/"
