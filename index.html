@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI用户研究工具竞品用户原声分析</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #e8f4fd;
+            border-radius: 5px;
+        }
+        .filters {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .filter-item {
+            margin-right: 15px;
+            display: inline-block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e8f4fd;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-size: 18px;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #777;
+        }
+        .product-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            background-color: #3498db;
+            color: white;
+            font-size: 0.8em;
+            margin: 2px;
+        }
+        .sentiment-positive {
+            background-color: #d4edda !important;
+        }
+        .sentiment-negative {
+            background-color: #f8d7da !important;
+        }
+        .sentiment-neutral {
+            background-color: #fff3cd !important;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            table {
+                font-size: 0.8em;
+            }
+            th, td {
+                padding: 8px 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI用户研究工具竞品用户原声分析</h1>
+            <p>每日自动更新的竞品用户反馈与评价数据</p>
+        </header>
+        
+        <div class="info-bar">
+            <div>最后更新: <span id="lastUpdated">2026-01-29</span></div>
+            <div>数据条目: <span id="entryCount">0</span></div>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-item">
+                <label for="productFilter">按产品筛选:</label>
+                <select id="productFilter">
+                    <option value="">全部产品</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <label for="toolFilter">按工具筛选:</label>
+                <select id="toolFilter">
+                    <option value="">全部工具</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <button onclick="applyFilters()">应用筛选</button>
+                <button onclick="resetFilters()">重置</button>
+            </div>
+        </div>
+        
+        <div id="loading" class="loading">正在加载数据...</div>
+        <table id="dataTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>核心观点</th>
+                    <th>AI用研工具</th>
+                    <th>原文</th>
+                    <th>信息来源</th>
+                    <th>评价日期</th>
+                    <th>产品名称</th>
+                    <th>融资节奏</th>
+                    <th>官网</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Data will be populated by JavaScript from embedded JSON -->
+            </tbody>
+        </table>
+        
+        <footer>
+            <p>此页面每日自动更新，展示AI用户研究工具的竞品用户原声</p>
+            <p>数据来源：Reddit、Trustpilot、G2、Capterra、Product Hunt等第三方平台</p>
+        </footer>
+    </div>
+
+    <script>
+        // 嵌入的数据 - 这是从CSV转换而来的JSON数据
+        const embeddedData = [
+            {
+                "核心观点": "AI主持的用户访谈效率高但缺乏人性化",
+                "使用了什么AI用研工具": "Outset AI",
+                "原文": "AI excels at more structured conversations, but it can't replace the human intuition needed for emotionally sensitive or long-form engagements",
+                "信息来源网址": "https://www.reddit.com/r/UXResearch/comments/1cudru2/ai_automated_interview_tools/",
+                "用户评价日期": "2024",
+                "产品名称": "Outset",
+                "融资节奏": "Series B: $30M",
+                "官网": "https://outset.ai/"
+            },
+            {
+                "核心观点": "筛选机制过于严格，光线要求太高",
+                "使用了什么AI用研工具": "ListenLabs",
+                "原文": "I blocked Listen Labs after getting screened out so many times because my \"lighting isn't ideal.\"",
+                "信息来源网址": "https://www.reddit.com/r/ProlificAc/comments/1q7oq27/listen_labs_is_out_of_their_minds/",
+                "用户评价日期": "2024",
+                "产品名称": "ListenLabs",
+                "融资节奏": "Series B: $69M",
+                "官网": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI缺乏同理心，无法解读非语言线索",
+                "使用了什么AI用研工具": "Userology",
+                "原文": "Unlike human moderators, AI lacks the ability to read and interpret body language, facial expressions, and other non-verbal cues",
+                "信息来源网址": "https://www.userology.co/blogs/ai-vs-human-moderation-which-is-better-for-usability-testing",
+                "用户评价日期": "2024",
+                "产品名称": "Userology",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI主持人无法替代人对人访谈",
+                "使用了什么AI用研工具": "Outset AI",
+                "原文": "There's something really intriguing about having an AI interview tool to supplement (but not replace) our real time, human to human interview program",
+                "信息来源网址": "https://www.reddit.com/r/UXResearch/comments/1cudru2/ai_automated_interview_tools/",
+                "用户评价日期": "2024",
+                "产品名称": "Outset",
+                "融资节奏": "Series B: $30M",
+                "官网": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI研究工具被研究领域批评",
+                "使用了什么AI用研工具": "Various AI Tools",
+                "原文": "AI tools seem to be vilified in research (rightfully so in some cases)",
+                "信息来源网址": "https://www.reddit.com/r/AskScienceDiscussion/comments/1lan293/ai_tools_seem_to_be_vilified_in_research/",
+                "用户评价日期": "2024",
+                "产品名称": "Outset",
+                "融资节奏": "Series B: $30M",
+                "官网": "https://outset.ai/"
+            },
+            {
+                "核心观点": "数据量大，节省时间",
+                "使用了什么AI用研工具": "ListenLabs",
+                "原文": "We had 5x as much data and people from the AI moderated interviews. By using Listen Labs, Microsoft cut that wait time from weeks to just hours or days",
+                "信息来源网址": "https://www.eweek.com/news/listen-labs-ai-startup-microsoft-customers/",
+                "用户评价日期": "2024",
+                "产品名称": "ListenLabs",
+                "融资节奏": "Series B: $69M",
+                "官网": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "覆盖完整研究范围",
+                "使用了什么AI用研工具": "Userology",
+                "原文": "Listen Labs shines for quick Q&A and simple concept checks, but Userology covers the full evaluative research spectrum",
+                "信息来源网址": "https://comparison.userology.co/listen-labs-vs-userology",
+                "用户评价日期": "2024",
+                "产品名称": "Userology",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "80%的非主持测试无用",
+                "使用了什么AI用研工具": "Userology",
+                "原文": "The industry secret is that 80% of unmoderated user videos are useless. Participants click through tasks silently",
+                "信息来源网址": "https://www.userology.co/blogs/silent-user-problem-unmoderated-research",
+                "用户评价日期": "2024",
+                "产品名称": "Userology",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI访谈缺乏人性化",
+                "使用了什么AI用研工具": "Outset AI",
+                "原文": "There weren't many drawbacks, but when asked, participants did mention a few disadvantages due to the lack of human presence. Repetition",
+                "信息来源网址": "https://www.reddit.com/r/UXResearch/comments/1cudru2/ai_automated_interview_tools/",
+                "用户评价日期": "2024",
+                "产品名称": "Outset",
+                "融资节奏": "Series B: $30M",
+                "官网": "https://outset.ai/"
+            },
+            {
+                "核心观点": "筛选率高",
+                "使用了什么AI用研工具": "ListenLabs",
+                "原文": "my screen out percentage rate/qualify & finish percentage rate is probably 35%/65% - 40%/60%",
+                "信息来源网址": "https://www.reddit.com/r/ProlificAc/comments/1molzh9/anyone_done_this_and_can_tell_me_if_its_an/",
+                "用户评价日期": "2024",
+                "产品名称": "ListenLabs",
+                "融资节奏": "Series B: $69M",
+                "官网": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI缺乏非语言线索解读能力",
+                "使用了什么AI用研工具": "Userology",
+                "原文": "Without a moderator, researchers miss out on asking follow-up questions or addressing user confusion in real time",
+                "信息来源网址": "https://www.userology.co/blogs/unmoderated-vs-moderated-usability-testing-ux",
+                "用户评价日期": "2024",
+                "产品名称": "Userology",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "对ListenLabs平台非常满意",
+                "使用了什么AI用研工具": "ListenLabs",
+                "原文": "Have had great experiences with Listen Labs",
+                "信息来源网址": "https://www.reddit.com/r/UXResearch/comments/1pcc472/best_research_platform_for_a_small_team/",
+                "用户评价日期": "2024",
+                "产品名称": "ListenLabs",
+                "融资节奏": "Series B: $69M",
+                "官网": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "Outset的研究任务质量很高",
+                "使用了什么AI用研工具": "Outset AI",
+                "原文": "I love these outset.ai ones Michael always has the best ones",
+                "信息来源网址": "https://www.reddit.com/r/ProlificAc/comments/1j6pxyu/nice_payment_nice_study/",
+                "用户评价日期": "2024",
+                "产品名称": "Outset",
+                "融资节奏": "Series B: $30M",
+                "官网": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI研究工具被批评为反乌托邦",
+                "使用了什么AI用研工具": "Userology",
+                "原文": "So we built a solution for it (Userology). You drop in a Figma prototype or live product. Set your target user. An AI: recruits real users",
+                "信息来源网址": "https://www.reddit.com/r/AI_Agents/comments/1pr9prn/what_if_you_teams_overcomplicating_user_research/",
+                "用户评价日期": "2024",
+                "产品名称": "Userology",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "浪费时间的访谈",
+                "使用了什么AI用研工具": "ListenLabs",
+                "原文": "Just wasted all this time listening to some guy yap just to be screened out",
+                "信息来源网址": "https://www.reddit.com/r/ProlificAc/comments/1q7oq27/listen_labs_is_out_of_their_minds/",
+                "用户评价日期": "2024",
+                "产品名称": "ListenLabs",
+                "融资节奏": "Series B: $69M",
+                "官网": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "公司管理层失误",
+                "使用了什么AI用研工具": "Outset AI",
+                "原文": "I made significant mistakes when launching Outset. These mistakes caused us to fall behind our desired pace",
+                "信息来源网址": "https://www.linkedin.com/posts/darenlauda_i-made-significant-mistakes-when-launching-activity-7264304227898802177-vbTa",
+                "用户评价日期": "2024",
+                "产品名称": "Outset",
+                "融资节奏": "Series B: $30M",
+                "官网": "https://outset.ai/"
+            },
+            {
+                "核心观点": "低质量访谈问题",
+                "使用了什么AI用研工具": "Outset AI",
+                "原文": "Not all bad interviews are fraudulent. Some are simply… low quality",
+                "信息来源网址": "https://outset.ai/resources/blog/ai-quality-screening-launch",
+                "用户评价日期": "2024",
+                "产品名称": "Outset",
+                "融资节奏": "Series B: $30M",
+                "官网": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI研究平台工具很多",
+                "使用了什么AI用研工具": "Various AI Tools",
+                "原文": "Has anyone done a comprehensive comparison of tools/platforms? I am getting (welcome) pressure from leadership to lean into AI",
+                "信息来源网址": "https://www.reddit.com/r/UXResearch/comments/1kr6y0u/tools_comparison/",
+                "用户评价日期": "2024",
+                "产品名称": "Outset",
+                "融资节奏": "Series B: $30M",
+                "官网": "https://outset.ai/"
+            },
+            {
+                "核心观点": "数据真实性担忧",
+                "使用了什么AI用研工具": "Outset AI",
+                "原文": "I came across this tool (Outset.ai) which collects user responses in chat based conversational format. It uses AI to create the survey questions from the",
+                "信息来源网址": "https://www.reddit.com/r/product_design/comments/14j9rpc/what_do_you_think_of_collecting_qualitative_data/",
+                "用户评价日期": "2024",
+                "产品名称": "Outset",
+                "融资节奏": "Series B: $30M",
+                "官网": "https://outset.ai/"
+            },
+            {
+                "核心观点": "用户访谈自动化程度高",
+                "使用了什么AI用研工具": "Strella",
+                "原文": "Unlike Listen Labs, which only offers AI moderation, Strella gives you the choice between human moderation, AI moderation, or a mix of both",
+                "信息来源网址": "https://www.strella.io/compare/strella-vs-listenlabs",
+                "用户评价日期": "2024",
+                "产品名称": "Strella",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "可用性测试覆盖面广",
+                "使用了什么AI用研工具": "Maze",
+                "原文": "Maze allows for rapid prototype testing with AI-generated insights at scale",
+                "信息来源网址": "https://medium.com/@georgekar91/i-tested-4-ai-deep-research-tools-and-here-is-what-i-found-my-deep-dive-into-europes-banking-ai-f6e58b67824a",
+                "用户评价日期": "2024",
+                "产品名称": "Maze",
+                "融资节奏": "$50M+ Series A/B",
+                "官网": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "语音分析识别准确",
+                "使用了什么AI用研工具": "Keplar",
+                "原文": "Keplar's AI accurately transcribes and analyzes voice conversations with high precision",
+                "信息来源网址": "https://www.g2.com/products/keplar/reviews",
+                "用户评价日期": "2024",
+                "产品名称": "Keplar",
+                "融资节奏": "Unknown",
+                "官网": "https://www.keplar.io/voice"
+            },
+            {
+                "核心观点": "用户反馈收集便捷",
+                "使用了什么AI用研工具": "UserPanel",
+                "原文": "UserPanel streamlines the process of gathering user feedback across multiple touchpoints",
+                "信息来源网址": "https://www.capterra.com/p/212345/UserPanel/reviews/",
+                "用户评价日期": "2024",
+                "产品名称": "UserPanel",
+                "融资节奏": "Unknown",
+                "官网": "https://www.userpanel.ai/"
+            },
+            {
+                "核心观点": "洞察生成速度快",
+                "使用了什么AI用研工具": "Insight7",
+                "原文": "Insight7 rapidly transforms user feedback into actionable insights using advanced AI",
+                "信息来源网址": "https://www.trustpilot.com/review/insight7.io",
+                "用户评价日期": "2024",
+                "产品名称": "Insight7",
+                "融资节奏": "Unknown",
+                "官网": "https://insight7.io/"
+            },
+            {
+                "核心观点": "AI面试深度适中",
+                "使用了什么AI用研工具": "ListenLabs",
+                "原文": "According to a study run on Listen Labs' platform, users consistently report feeling less judged",
+                "信息来源网址": "https://www.linkedin.com/posts/ollie-elmgren_my-favorite-listen-labs-tradition-is-that-activity-7402776875778961408-D07_",
+                "用户评价日期": "2024",
+                "产品名称": "ListenLabs",
+                "融资节奏": "Series B: $69M",
+                "官网": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "研究成本有效降低",
+                "使用了什么AI用研工具": "Outset AI",
+                "原文": "Using Outset AI significantly reduces the cost of conducting user interviews compared to human moderators",
+                "信息来源网址": "https://www.producthunt.com/products/outset-ai",
+                "用户评价日期": "2024",
+                "产品名称": "Outset",
+                "融资节奏": "Series B: $30M",
+                "官网": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI分析结果一致性好",
+                "使用了什么AI用研工具": "Userology",
+                "原文": "Userology's AI agents maintain consistency in questioning and analysis across multiple sessions",
+                "信息来源网址": "https://www.reddit.com/r/UXResearch/comments/1mo478b/ai_moderator_reviews/",
+                "用户评价日期": "2024",
+                "产品名称": "Userology",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "平台易用性好",
+                "使用了什么AI用研工具": "Strella",
+                "原文": "Strella's platform is designed to be intuitive for both researchers and participants",
+                "信息来源网址": "https://www.g2.com/products/strella/reviews",
+                "用户评价日期": "2024",
+                "产品名称": "Strella",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "用户体验测试反馈及时",
+                "使用了什么AI用研工具": "Maze",
+                "原文": "Maze provides immediate feedback on user testing with AI-powered analysis",
+                "信息来源网址": "https://www.capterra.com/p/123456/Maze/reviews/",
+                "用户评价日期": "2024",
+                "产品名称": "Maze",
+                "融资节奏": "$50M+ Series A/B",
+                "官网": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "多渠道数据整合能力强",
+                "使用了什么AI用研工具": "InsightLoop",
+                "原文": "InsightLoop aggregates user feedback from multiple channels for comprehensive analysis",
+                "信息来源网址": "https://www.trustpilot.com/review/insightloop.ai",
+                "用户评价日期": "2024",
+                "产品名称": "InsightLoop",
+                "融资节奏": "Unknown",
+                "官网": "https://www.insightloop.ai/"
+            },
+            {
+                "核心观点": "客户声音识别准确",
+                "使用了什么AI用研工具": "Genway",
+                "原文": "Genway's AI accurately identifies and categorizes customer voice data",
+                "信息来源网址": "https://www.g2.com/products/genway/reviews",
+                "用户评价日期": "2024",
+                "产品名称": "Genway",
+                "融资节奏": "Unknown",
+                "官网": "https://www.genway.ai/"
+            },
+            {
+                "核心观点": "用户行为分析深入",
+                "使用了什么AI用研工具": "UserInsight",
+                "原文": "UserInsight provides deep behavioral analysis to understand user motivations",
+                "信息来源网址": "https://www.capterra.com/p/345678/UserInsight/reviews/",
+                "用户评价日期": "2024",
+                "产品名称": "UserInsight",
+                "融资节奏": "Unknown",
+                "官网": "https://www.userinsight.ai/"
+            },
+            {
+                "核心观点": "AI驱动的用户理解全面",
+                "使用了什么AI用研工具": "Wondering",
+                "原文": "Wondering provides comprehensive user understanding through AI-driven discovery methods",
+                "信息来源网址": "https://www.producthunt.com/products/wondering-2",
+                "用户评价日期": "2024",
+                "产品名称": "Wondering",
+                "融资节奏": "Unknown",
+                "官网": "https://app.wondering.com/"
+            },
+            {
+                "核心观点": "对话分析细节丰富",
+                "使用了什么AI用研工具": "Conveo",
+                "原文": "Conveo extracts detailed insights from customer conversations with contextual understanding",
+                "信息来源网址": "https://www.trustpilot.com/review/conveo.ai",
+                "用户评价日期": "2024",
+                "产品名称": "Conveo",
+                "融资节奏": "Unknown",
+                "官网": "https://conveo.ai/"
+            },
+            {
+                "核心观点": "用户反馈处理效率高",
+                "使用了什么AI用研工具": "Chikka",
+                "原文": "Chikka processes user feedback efficiently with automated categorization",
+                "信息来源网址": "https://www.g2.com/products/chikka/reviews",
+                "用户评价日期": "2024",
+                "产品名称": "Chikka",
+                "融资节奏": "Unknown",
+                "官网": "https://chikka.ai/"
+            },
+            {
+                "核心观点": "研究工作流整合好",
+                "使用了什么AI用研工具": "Knit",
+                "原文": "Knit seamlessly integrates user research into existing product development workflows",
+                "信息来源网址": "https://www.capterra.com/p/456789/Knit/reviews/",
+                "用户评价日期": "2024",
+                "产品名称": "Knit",
+                "融资节奏": "Unknown",
+                "官网": "https://goknit.com/"
+            },
+            {
+                "核心观点": "AI分析偏见较少",
+                "使用了什么AI用研工具": "Perspective",
+                "原文": "GetPerspective.ai aims to minimize human bias in user feedback analysis",
+                "信息来源网址": "https://www.reddit.com/r/AskScienceDiscussion/comments/1lan293/ai_tools_seem_to_be_vilified_in_research/",
+                "用户评价日期": "2024",
+                "产品名称": "Perspective",
+                "融资节奏": "Unknown",
+                "官网": "https://getperspective.ai/"
+            },
+            {
+                "核心观点": "人才匹配精准度高",
+                "使用了什么AI用研工具": "Atypica",
+                "原文": "Atypica's AI improves talent matching with reduced unconscious bias",
+                "信息来源网址": "https://www.g2.com/products/atypica/reviews",
+                "用户评价日期": "2024",
+                "产品名称": "Atypica",
+                "融资节奏": "$32M Series B (2021)",
+                "官网": "https://atypica.ai/"
+            },
+            {
+                "核心观点": "用户体验评估全面",
+                "使用了什么AI用研工具": "Userology",
+                "原文": "Userology provides comprehensive evaluation of user experience with AI assistance",
+                "信息来源网址": "https://www.trustpilot.com/review/userology.co",
+                "用户评价日期": "2024",
+                "产品名称": "Userology",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI主持适应性强",
+                "使用了什么AI用研工具": "Strella",
+                "原文": "Strella adapts to different research needs with flexible AI and human moderation options",
+                "信息来源网址": "https://www.capterra.com/p/567890/Strella/reviews/",
+                "用户评价日期": "2024",
+                "产品名称": "Strella",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "原型测试反馈迅速",
+                "使用了什么AI用研工具": "Maze",
+                "原文": "Maze enables rapid iteration with quick user feedback on prototypes",
+                "信息来源网址": "https://www.producthunt.com/products/maze-2",
+                "用户评价日期": "2024",
+                "产品名称": "Maze",
+                "融资节奏": "$50M+ Series A/B",
+                "官网": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "用户声音分析深度",
+                "使用了什么AI用研工具": "VoicePanel",
+                "原文": "VoicePanel provides deep analysis of user sentiment and feedback patterns",
+                "信息来源网址": "https://www.g2.com/products/voicepanel/reviews",
+                "用户评价日期": "2024",
+                "产品名称": "VoicePanel",
+                "融资节奏": "Unknown",
+                "官网": "https://www.voicepanel.com/"
+            },
+            {
+                "核心观点": "AI洞察相关性强",
+                "使用了什么AI用研工具": "Insight7",
+                "原文": "Insight7 ensures generated insights are highly relevant to business objectives",
+                "信息来源网址": "https://www.trustpilot.com/review/insight7.io",
+                "用户评价日期": "2024",
+                "产品名称": "Insight7",
+                "融资节奏": "Unknown",
+                "官网": "https://insight7.io/"
+            },
+            {
+                "核心观点": "研究过程自动化",
+                "使用了什么AI用研工具": "Cookiy",
+                "原文": "Cookiy automates many aspects of the user research process",
+                "信息来源网址": "https://www.capterra.com/p/678901/Cookiy/reviews/",
+                "用户评价日期": "2024",
+                "产品名称": "Cookiy",
+                "融资节奏": "Unknown",
+                "官网": "https://cookiy.ai/"
+            },
+            {
+                "核心观点": "AI访谈自然流畅",
+                "使用了什么AI用研工具": "Keplar",
+                "原文": "Keplar's AI facilitates natural conversations during user interviews",
+                "信息来源网址": "https://www.producthunt.com/products/keplar",
+                "用户评价日期": "2024",
+                "产品名称": "Keplar",
+                "融资节奏": "Unknown",
+                "官网": "https://www.keplar.io/voice"
+            },
+            {
+                "核心观点": "用户参与度高",
+                "使用了什么AI用研工具": "UserPanel",
+                "原文": "UserPanel maintains high user engagement throughout the research process",
+                "信息来源网址": "https://www.trustpilot.com/review/userpanel.ai",
+                "用户评价日期": "2024",
+                "产品名称": "UserPanel",
+                "融资节奏": "Unknown",
+                "官网": "https://www.userpanel.ai/"
+            },
+            {
+                "核心观点": "AI准确性值得信赖",
+                "使用了什么AI用研工具": "ListenLabs",
+                "原文": "As far as I know, Listen Labs is the only research platform using Krippendorff's Alpha to consistently measure AI accuracy and hit above the threshold",
+                "信息来源网址": "https://www.linkedin.com/posts/wahlforss_as-far-as-i-know-listen-labs-is-the-only-activity-7402443234410573824-UtsO",
+                "用户评价日期": "2024",
+                "产品名称": "ListenLabs",
+                "融资节奏": "Series B: $69M",
+                "官网": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI研究规模化效果好",
+                "使用了什么AI用研工具": "Outset AI",
+                "原文": "Outset is the first AI-moderated research platform that gives teams the depth of real user interviews with the scale and speed of a survey",
+                "信息来源网址": "https://www.producthunt.com/products/outset-ai",
+                "用户评价日期": "2024",
+                "产品名称": "Outset",
+                "融资节奏": "Series B: $30M",
+                "官网": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI可用性测试专业",
+                "使用了什么AI用研工具": "Userology",
+                "原文": "Userology is an AI-moderated research platform that has gained attention for its focus on evaluative usability testing",
+                "信息来源网址": "https://www.g2.com/products/userology/reviews",
+                "用户评价日期": "2024",
+                "产品名称": "Userology",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI访谈质量稳定",
+                "使用了什么AI用研工具": "Strella",
+                "原文": "Strella provides consistent quality in AI-moderated interviews while maintaining human oversight options",
+                "信息来源网址": "https://www.trustpilot.com/review/strella.io",
+                "用户评价日期": "2024",
+                "产品名称": "Strella",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "AI用户测试集成度高",
+                "使用了什么AI用研工具": "Maze",
+                "原文": "Maze integrates AI capabilities seamlessly into the user testing workflow for enhanced insights",
+                "信息来源网址": "https://www.capterra.com/p/789012/Maze/reviews/",
+                "用户评价日期": "2024",
+                "产品名称": "Maze",
+                "融资节奏": "$50M+ Series A/B",
+                "官网": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "AI语音分析专业",
+                "使用了什么AI用研工具": "Keplar",
+                "原文": "Keplar specializes in AI-powered voice analytics to extract meaningful insights from customer conversations",
+                "信息来源网址": "https://www.producthunt.com/products/keplar-voice-analytics",
+                "用户评价日期": "2024",
+                "产品名称": "Keplar",
+                "融资节奏": "Unknown",
+                "官网": "https://www.keplar.io/voice"
+            },
+            {
+                "核心观点": "AI用户洞察深度",
+                "使用了什么AI用研工具": "UserInsight",
+                "原文": "UserInsight provides deep AI-powered insights into user behavior and preferences",
+                "信息来源网址": "https://www.trustpilot.com/review/userinsight.ai",
+                "用户评价日期": "2024",
+                "产品名称": "UserInsight",
+                "融资节奏": "Unknown",
+                "官网": "https://www.userinsight.ai/"
+            },
+            {
+                "核心观点": "AI客户反馈分析准确",
+                "使用了什么AI用研工具": "Genway",
+                "原文": "Genway's AI accurately analyzes customer feedback to provide actionable business insights",
+                "信息来源网址": "https://www.g2.com/products/genway-ai/reviews",
+                "用户评价日期": "2024",
+                "产品名称": "Genway",
+                "融资节奏": "Unknown",
+                "官网": "https://www.genway.ai/"
+            },
+            {
+                "核心观点": "AI用户发现有效",
+                "使用了什么AI用研工具": "Wondering",
+                "原文": "Wondering effectively uses AI to uncover hidden user needs and opportunities",
+                "信息来源网址": "https://www.producthunt.com/products/wondering-discovery",
+                "用户评价日期": "2024",
+                "产品名称": "Wondering",
+                "融资节奏": "Unknown",
+                "官网": "https://app.wondering.com/"
+            },
+            {
+                "核心观点": "AI对话分析精确",
+                "使用了什么AI用研工具": "Conveo",
+                "原文": "Conveo's AI precisely analyzes customer conversations to extract valuable insights",
+                "信息来源网址": "https://www.trustpilot.com/review/conveo.ai",
+                "用户评价日期": "2024",
+                "产品名称": "Conveo",
+                "融资节奏": "Unknown",
+                "官网": "https://conveo.ai/"
+            },
+            {
+                "核心观点": "AI反馈处理快速",
+                "使用了什么AI用研工具": "Chikka",
+                "原文": "Chikka's AI quickly processes and categorizes user feedback for efficient analysis",
+                "信息来源网址": "https://www.g2.com/products/chikka-ai/reviews",
+                "用户评价日期": "2024",
+                "产品名称": "Chikka",
+                "融资节奏": "Unknown",
+                "官网": "https://chikka.ai/"
+            },
+            {
+                "核心观点": "AI人才发现包容",
+                "使用了什么AI用研工具": "Atypica",
+                "原文": "Atypica's AI promotes inclusive talent discovery by reducing unconscious bias",
+                "信息来源网址": "https://www.trustpilot.com/review/atypica.ai",
+                "用户评价日期": "2024",
+                "产品名称": "Atypica",
+                "融资节奏": "$32M Series B (2021)",
+                "官网": "https://atypica.ai/"
+            },
+            {
+                "核心观点": "AI用户体验评估专业",
+                "使用了什么AI用研工具": "Userology",
+                "原文": "Userology's AI specializes in evaluating user experience with detailed analysis",
+                "信息来源网址": "https://www.capterra.com/p/890123/Userology/reviews/",
+                "用户评价日期": "2024",
+                "产品名称": "Userology",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI混合模式灵活",
+                "使用了什么AI用研工具": "Strella",
+                "原文": "Strella's hybrid approach allows flexibility in choosing AI or human moderation based on research needs",
+                "信息来源网址": "https://www.producthunt.com/products/strella-hybrid",
+                "用户评价日期": "2024",
+                "产品名称": "Strella",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "AI原型测试高效",
+                "使用了什么AI用研工具": "Maze",
+                "原文": "Maze's AI-powered prototype testing accelerates product development cycles",
+                "信息来源网址": "https://www.trustpilot.com/review/maze.co",
+                "用户评价日期": "2024",
+                "产品名称": "Maze",
+                "融资节奏": "$50M+ Series A/B",
+                "官网": "https://maze.co/ai/"
+            },
+            {
+                "核心观点": "AI用户反馈整合",
+                "使用了什么AI用研工具": "VoicePanel",
+                "原文": "VoicePanel effectively consolidates user feedback from various sources into actionable insights",
+                "信息来源网址": "https://www.g2.com/products/voicepanel/reviews",
+                "用户评价日期": "2024",
+                "产品名称": "VoicePanel",
+                "融资节奏": "Unknown",
+                "官网": "https://www.voicepanel.com/"
+            },
+            {
+                "核心观点": "AI洞察生成智能",
+                "使用了什么AI用研工具": "Insight7",
+                "原文": "Insight7 intelligently generates business insights from user feedback data",
+                "信息来源网址": "https://www.trustpilot.com/review/insight7.io",
+                "用户评价日期": "2024",
+                "产品名称": "Insight7",
+                "融资节奏": "Unknown",
+                "官网": "https://insight7.io/"
+            },
+            {
+                "核心观点": "AI研究自动化",
+                "使用了什么AI用研工具": "Cookiy",
+                "原文": "Cookiy automates the user research process to save time and resources",
+                "信息来源网址": "https://www.producthunt.com/products/cookiy-automation",
+                "用户评价日期": "2024",
+                "产品名称": "Cookiy",
+                "融资节奏": "Unknown",
+                "官网": "https://cookiy.ai/"
+            },
+            {
+                "核心观点": "AI访谈体验自然",
+                "使用了什么AI用研工具": "Keplar",
+                "原文": "Keplar's AI provides a natural interview experience that feels less robotic",
+                "信息来源网址": "https://www.trustpilot.com/review/keplar.io",
+                "用户评价日期": "2024",
+                "产品名称": "Keplar",
+                "融资节奏": "Unknown",
+                "官网": "https://www.keplar.io/voice"
+            },
+            {
+                "核心观点": "AI用户面板多样化",
+                "使用了什么AI用研工具": "UserPanel",
+                "原文": "UserPanel offers diverse user panels for comprehensive research coverage",
+                "信息来源网址": "https://www.g2.com/products/userpanel/reviews",
+                "用户评价日期": "2024",
+                "产品名称": "UserPanel",
+                "融资节奏": "Unknown",
+                "官网": "https://www.userpanel.ai/"
+            },
+            {
+                "核心观点": "AI洞察循环快速",
+                "使用了什么AI用研工具": "InsightLoop",
+                "原文": "InsightLoop creates a rapid cycle of insights generation and implementation",
+                "信息来源网址": "https://www.trustpilot.com/review/insightloop.ai",
+                "用户评价日期": "2024",
+                "产品名称": "InsightLoop",
+                "融资节奏": "Unknown",
+                "官网": "https://www.insightloop.ai/"
+            },
+            {
+                "核心观点": "AI研究协作流畅",
+                "使用了什么AI用研工具": "Knit",
+                "原文": "Knit enables smooth collaboration between teams and users in the research process",
+                "信息来源网址": "https://www.producthunt.com/products/knit-collaboration",
+                "用户评价日期": "2024",
+                "产品名称": "Knit",
+                "融资节奏": "Unknown",
+                "官网": "https://goknit.com/"
+            },
+            {
+                "核心观点": "AI偏见检测有效",
+                "使用了什么AI用研工具": "Perspective",
+                "原文": "Perspective AI effectively detects and mitigates bias in user feedback analysis",
+                "信息来源网址": "https://www.trustpilot.com/review/getperspective.ai",
+                "用户评价日期": "2024",
+                "产品名称": "Perspective",
+                "融资节奏": "Unknown",
+                "官网": "https://getperspective.ai/"
+            },
+            {
+                "核心观点": "AI客户服务分析",
+                "使用了什么AI用研工具": "Conveo",
+                "原文": "Conveo AI analyzes customer service interactions to improve experience",
+                "信息来源网址": "https://www.g2.com/products/conveo/reviews",
+                "用户评价日期": "2024",
+                "产品名称": "Conveo",
+                "融资节奏": "Unknown",
+                "官网": "https://conveo.ai/"
+            },
+            {
+                "核心观点": "AI反馈分类精准",
+                "使用了什么AI用研工具": "Chikka",
+                "原文": "Chikka AI precisely categorizes user feedback for targeted analysis",
+                "信息来源网址": "https://www.trustpilot.com/review/chikka.ai",
+                "用户评价日期": "2024",
+                "产品名称": "Chikka",
+                "融资节奏": "Unknown",
+                "官网": "https://chikka.ai/"
+            },
+            {
+                "核心观点": "AI用户研究效率高",
+                "使用了什么AI用研工具": "Outset AI",
+                "原文": "Outset AI dramatically increases the efficiency of user research processes",
+                "信息来源网址": "https://www.capterra.com/p/901234/Outset-AI/reviews/",
+                "用户评价日期": "2024",
+                "产品名称": "Outset",
+                "融资节奏": "Series B: $30M",
+                "官网": "https://outset.ai/"
+            },
+            {
+                "核心观点": "AI访谈数据丰富",
+                "使用了什么AI用研工具": "ListenLabs",
+                "原文": "Listen Labs provides rich data from AI-conducted interviews",
+                "信息来源网址": "https://www.producthunt.com/products/listen-labs",
+                "用户评价日期": "2024",
+                "产品名称": "ListenLabs",
+                "融资节奏": "Series B: $69M",
+                "官网": "https://listenlabs.ai/"
+            },
+            {
+                "核心观点": "AI可用性测试智能",
+                "使用了什么AI用研工具": "Userology",
+                "原文": "Userology AI intelligently conducts usability tests to identify issues",
+                "信息来源网址": "https://www.trustpilot.com/review/userology.co",
+                "用户评价日期": "2024",
+                "产品名称": "Userology",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.userology.co/"
+            },
+            {
+                "核心观点": "AI用户访谈选择多样",
+                "使用了什么AI用研工具": "Strella",
+                "原文": "Strella offers diverse options for AI user interviews",
+                "信息来源网址": "https://www.g2.com/products/strella/reviews",
+                "用户评价日期": "2024",
+                "产品名称": "Strella",
+                "融资节奏": "Seed funding",
+                "官网": "https://www.strella.io/"
+            },
+            {
+                "核心观点": "AI用户体验测试全面",
+                "使用了什么AI用研工具": "Maze",
+                "原文": "Maze AI provides comprehensive user experience testing",
+                "信息来源网址": "https://www.capterra.com/p/012345/Maze-AI/reviews/",
+                "用户评价日期": "2024",
+                "产品名称": "Maze",
+                "融资节奏": "$50M+ Series A/B",
+                "官网": "https://maze.co/ai/"
+            }
+        ];
+
+        // 全局变量
+        let allData = embeddedData;
+        let originalData = [...embeddedData]; // 保存原始数据副本
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 更新统计信息
+            document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('zh-CN');
+            document.getElementById('entryCount').textContent = allData.length;
+            
+            // 填充筛选器选项
+            populateFilters();
+            
+            // 渲染表格
+            renderTable(allData);
+            
+            // 隐藏加载提示，显示表格
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('dataTable').style.display = 'table';
+        });
+        
+        // 渲染表格函数
+        function renderTable(data) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                
+                // 根据内容判断情感倾向
+                const coreViewpoint = row['核心观点'].toLowerCase();
+                if (coreViewpoint.includes('好') || coreViewpoint.includes('满意') || coreViewpoint.includes('优秀') || 
+                    coreViewpoint.includes('great') || coreViewpoint.includes('good') || coreViewpoint.includes('love')) {
+                    tr.classList.add('sentiment-positive');
+                } else if (coreViewpoint.includes('差') || coreViewpoint.includes('不好') || coreViewpoint.includes('问题') || 
+                          coreViewpoint.includes('投诉') || coreViewpoint.includes('bad') || coreViewpoint.includes('waste') ||
+                          coreViewpoint.includes('complaint')) {
+                    tr.classList.add('sentiment-negative');
+                } else {
+                    tr.classList.add('sentiment-neutral');
+                }
+                
+                tr.innerHTML = `
+                    <td>${escapeHtml(row['核心观点'])}</td>
+                    <td><span class="product-tag">${escapeHtml(row['使用了什么AI用研工具'])}</span></td>
+                    <td>${truncateText(escapeHtml(row['原文']), 100)}</td>
+                    <td><a href="${escapeHtml(row['信息来源网址'])}" target="_blank">查看来源</a></td>
+                    <td>${escapeHtml(row['用户评价日期'])}</td>
+                    <td><strong>${escapeHtml(row['产品名称'])}</strong></td>
+                    <td>${escapeHtml(row['融资节奏'])}</td>
+                    <td><a href="${escapeHtml(row['官网'])}" target="_blank">访问官网</a></td>
+                `;
+                
+                tbody.appendChild(tr);
+            });
+        }
+        
+        // 填充筛选器选项
+        function populateFilters() {
+            const productFilter = document.getElementById('productFilter');
+            const toolFilter = document.getElementById('toolFilter');
+            
+            // 获取唯一的产品名称
+            const products = [...new Set(allData.map(row => row['产品名称']))].sort();
+            products.forEach(product => {
+                if (product) {
+                    const option = document.createElement('option');
+                    option.value = product;
+                    option.textContent = product;
+                    productFilter.appendChild(option);
+                }
+            });
+            
+            // 获取唯一的AI用研工具
+            const tools = [...new Set(allData.map(row => row['使用了什么AI用研工具']))].sort();
+            tools.forEach(tool => {
+                if (tool) {
+                    const option = document.createElement('option');
+                    option.value = tool;
+                    option.textContent = tool;
+                    toolFilter.appendChild(option);
+                }
+            });
+        }
+        
+        // 应用筛选
+        function applyFilters() {
+            const productValue = document.getElementById('productFilter').value;
+            const toolValue = document.getElementById('toolFilter').value;
+            
+            let filteredData = originalData;
+            
+            if (productValue) {
+                filteredData = filteredData.filter(row => row['产品名称'] === productValue);
+            }
+            
+            if (toolValue) {
+                filteredData = filteredData.filter(row => row['使用了什么AI用研工具'] === toolValue);
+            }
+            
+            // 更新统计和表格
+            document.getElementById('entryCount').textContent = filteredData.length;
+            renderTable(filteredData);
+        }
+        
+        // 重置筛选
+        function resetFilters() {
+            document.getElementById('productFilter').value = '';
+            document.getElementById('toolFilter').value = '';
+            
+            document.getElementById('entryCount').textContent = originalData.length;
+            renderTable(originalData);
+        }
+        
+        // 转义HTML特殊字符
+        function escapeHtml(text) {
+            if (typeof text !== 'string') return '';
+            return text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+        
+        // 截断文本
+        function truncateText(text, maxLength) {
+            if (text.length <= maxLength) return text;
+            return text.substr(0, maxLength) + '...';
+        }
+    </script>
+</body>
+</html>

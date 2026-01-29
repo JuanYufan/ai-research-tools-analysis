@@ -1,0 +1,15 @@
+/* 响应式设计增强 */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  .container {
+    padding: 10px;
+  }
+  table {
+    font-size: 12px;
+  }
+  th, td {
+    padding: 6px 3px;
+  }
+}
