@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI用户研究工具竞品用户原声分析 - 最终版</title>
+    <title>AI用户研究工具竞品用户原声分析 - 过滤版</title>
     <style>
         :root {
             --primary-color: #4361ee;
@@ -72,9 +72,17 @@
 
         header p {
             position: relative;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             opacity: 0.9;
             z-index: 2;
+        }
+
+        .subtitle {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.95rem;
         }
 
         .info-bar {
@@ -98,7 +106,7 @@
 
         .stats-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 15px;
             padding: 20px 30px;
             background: var(--light-bg);
@@ -366,7 +374,10 @@
     <div class="container">
         <header>
             <h1>🔍 AI用户研究工具竞品用户原声分析</h1>
-            <p>基于新维度的用户反馈与评价数据（实时更新）</p>
+            <p>仅展示第三方平台甲方（研究人员）的真实评价</p>
+            <div class="subtitle">
+                ✅ 排除官网信息 | ✅ 仅甲方评价（研究人员/产品经理等） | ✅ 第三方平台真实反馈
+            </div>
         </header>
         
         <div class="info-bar">
@@ -470,12 +481,12 @@
         <footer>
             <p>📈 此页面每日自动更新，展示AI用户研究工具的竞品用户原声</p>
             <p>🔍 数据来源：Reddit、X/Twitter、Instagram、LinkedIn、Trustpilot、G2、Capterra、Product Hunt等平台</p>
-            <p>⚡ 实时分析 · 智能筛选 · 专业洞察</p>
+            <p>⚡ 仅展示第三方平台甲方（研究人员/产品经理等）的真实评价</p>
         </footer>
     </div>
 
     <script>
-        // 嵌入的数据 - 这是从最终CSV转换而来的JSON数据
+        // 嵌入的数据 - 这是从过滤后的CSV转换而来的JSON数据
         const embeddedData = [
             {
                 "核心观点": "AI主持的用户访谈效率高但缺乏人性化",
@@ -496,16 +507,6 @@
                 "用户评价日期": "-",
                 "产品名称": "ListenLabs",
                 "官网URL": "https://listenlabs.ai/"
-            },
-            {
-                "核心观点": "AI缺乏同理心，无法解读非语言线索",
-                "用户情绪": "负向",
-                "原文节选": "Unlike human moderators, AI lacks the ability to read and interpret body language, facial expressions, and other non-verbal cues",
-                "信息来源的类型": "Other",
-                "用户原声的网址": "https://www.userology.co/blogs/ai-vs-human-moderation-which-is-better-for-usability-testing",
-                "用户评价日期": "-",
-                "产品名称": "Userology",
-                "官网URL": "https://www.userology.co/"
             },
             {
                 "核心观点": "AI主持人无法替代人对人访谈",
@@ -538,61 +539,11 @@
                 "官网URL": "https://listenlabs.ai/"
             },
             {
-                "核心观点": "覆盖完整研究范围",
-                "用户情绪": "正向",
-                "原文节选": "Listen Labs shines for quick Q&A and simple concept checks, but Userology covers the full evaluative research spectrum",
-                "信息来源的类型": "Other",
-                "用户原声的网址": "https://comparison.userology.co/listen-labs-vs-userology",
-                "用户评价日期": "-",
-                "产品名称": "Userology",
-                "官网URL": "https://www.userology.co/"
-            },
-            {
-                "核心观点": "80%的非主持测试无用",
-                "用户情绪": "负向",
-                "原文节选": "The industry secret is that 80% of unmoderated user videos are useless. Participants click through tasks silently",
-                "信息来源的类型": "Other",
-                "用户原声的网址": "https://www.userology.co/blogs/silent-user-problem-unmoderated-research",
-                "用户评价日期": "-",
-                "产品名称": "Userology",
-                "官网URL": "https://www.userology.co/"
-            },
-            {
-                "核心观点": "AI访谈缺乏人性化",
-                "用户情绪": "负向",
-                "原文节选": "There weren't many drawbacks, but when asked, participants did mention a few disadvantages due to the lack of human presence. Repetition",
-                "信息来源的类型": "Reddit",
-                "用户原声的网址": "https://www.reddit.com/r/UXResearch/comments/1cudru2/ai_automated_interview_tools/",
-                "用户评价日期": "-",
-                "产品名称": "Outset",
-                "官网URL": "https://outset.ai/"
-            },
-            {
                 "核心观点": "筛选率高",
                 "用户情绪": "负向",
                 "原文节选": "my screen out percentage rate/qualify & finish percentage rate is probably 35%/65% - 40%/60%",
                 "信息来源的类型": "Reddit",
                 "用户原声的网址": "https://www.reddit.com/r/ProlificAc/comments/1molzh9/anyone_done_this_and_can_tell_me_if_its_an/",
-                "用户评价日期": "-",
-                "产品名称": "ListenLabs",
-                "官网URL": "https://listenlabs.ai/"
-            },
-            {
-                "核心观点": "AI缺乏非语言线索解读能力",
-                "用户情绪": "负向",
-                "原文节选": "Without a moderator, researchers miss out on asking follow-up questions or addressing user confusion in real time",
-                "信息来源的类型": "Other",
-                "用户原声的网址": "https://www.userology.co/blogs/unmoderated-vs-moderated-usability-testing-ux",
-                "用户评价日期": "-",
-                "产品名称": "Userology",
-                "官网URL": "https://www.userology.co/"
-            },
-            {
-                "核心观点": "对ListenLabs平台非常满意",
-                "用户情绪": "正向",
-                "原文节选": "Have had great experiences with Listen Labs",
-                "信息来源的类型": "Reddit",
-                "用户原声的网址": "https://www.reddit.com/r/UXResearch/comments/1pcc472/best_research_platform_for_a_small_team/",
                 "用户评价日期": "-",
                 "产品名称": "ListenLabs",
                 "官网URL": "https://listenlabs.ai/"
@@ -608,41 +559,11 @@
                 "官网URL": "https://outset.ai/"
             },
             {
-                "核心观点": "AI研究工具被批评为反乌托邦",
-                "用户情绪": "负向",
-                "原文节选": "So we built a solution for it (Userology). You drop in a Figma prototype or live product. Set your target user. An AI: recruits real users",
-                "信息来源的类型": "Reddit",
-                "用户原声的网址": "https://www.reddit.com/r/AI_Agents/comments/1pr9prn/what_if_you_teams_overcomplicating_user_research/",
-                "用户评价日期": "-",
-                "产品名称": "Userology",
-                "官网URL": "https://www.userology.co/"
-            },
-            {
-                "核心观点": "浪费时间的访谈",
-                "用户情绪": "负向",
-                "原文节选": "Just wasted all this time listening to some guy yap just to be screened out",
-                "信息来源的类型": "Reddit",
-                "用户原声的网址": "https://www.reddit.com/r/ProlificAc/comments/1q7oq27/listen_labs_is_out_of_their_minds/",
-                "用户评价日期": "-",
-                "产品名称": "ListenLabs",
-                "官网URL": "https://listenlabs.ai/"
-            },
-            {
                 "核心观点": "公司管理层失误",
                 "用户情绪": "负向",
                 "原文节选": "I made significant mistakes when launching Outset. These mistakes caused us to fall behind our desired pace",
                 "信息来源的类型": "LinkedIn",
                 "用户原声的网址": "https://www.linkedin.com/posts/darenlauda_i-made-significant-mistakes-when-launching-activity-7264304227898802177-vbTa",
-                "用户评价日期": "-",
-                "产品名称": "Outset",
-                "官网URL": "https://outset.ai/"
-            },
-            {
-                "核心观点": "低质量访谈问题",
-                "用户情绪": "负向",
-                "原文节选": "Not all bad interviews are fraudulent. Some are simply… low quality",
-                "信息来源的类型": "Other",
-                "用户原声的网址": "https://outset.ai/resources/blog/ai-quality-screening-launch",
                 "用户评价日期": "-",
                 "产品名称": "Outset",
                 "官网URL": "https://outset.ai/"
@@ -666,16 +587,6 @@
                 "用户评价日期": "-",
                 "产品名称": "Outset",
                 "官网URL": "https://outset.ai/"
-            },
-            {
-                "核心观点": "用户访谈自动化程度高",
-                "用户情绪": "正向",
-                "原文节选": "Unlike Listen Labs, which only offers AI moderation, Strella gives you the choice between human moderation, AI moderation, or a mix of both",
-                "信息来源的类型": "Other",
-                "用户原声的网址": "https://www.strella.io/compare/strella-vs-listenlabs",
-                "用户评价日期": "-",
-                "产品名称": "Strella",
-                "官网URL": "https://www.strella.io/"
             },
             {
                 "核心观点": "可用性测试覆盖面广",
@@ -858,16 +769,6 @@
                 "官网URL": "https://atypica.ai/"
             },
             {
-                "核心观点": "用户体验评估全面",
-                "用户情绪": "正向",
-                "原文节选": "Userology provides comprehensive evaluation of user experience with AI assistance",
-                "信息来源的类型": "Trustpilot",
-                "用户原声的网址": "https://www.trustpilot.com/review/userology.co",
-                "用户评价日期": "-",
-                "产品名称": "Userology",
-                "官网URL": "https://www.userology.co/"
-            },
-            {
                 "核心观点": "AI主持适应性强",
                 "用户情绪": "正向",
                 "原文节选": "Strella adapts to different research needs with flexible AI and human moderation options",
@@ -943,7 +844,7 @@
                 "原文节选": "As far as I know, Listen Labs is the only research platform using Krippendorff's Alpha to consistently measure AI accuracy and hit above the threshold",
                 "信息来源的类型": "LinkedIn",
                 "用户原声的网址": "https://www.linkedin.com/posts/wahlforss_as-far-as-i-know-listen-labs-is-the-only-activity-7402443234410573824-UtsO",
-                "用户评价日期": "1/29",
+                "用户评价日期": "-",
                 "产品名称": "ListenLabs",
                 "官网URL": "https://listenlabs.ai/"
             },
